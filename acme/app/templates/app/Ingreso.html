@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="Es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="Veterinaria Acme" content="width=device-width, initial-scale=1.0 ">
+    <title>SCVA_Ingreso</title>
+    
+    <link rel="stylesheet" href="{% static 'app/css/ingreso.css' %}">
+</head>
+<body>
+    <!--caja donde están los elementos-->    
+    <div class="container">
+        <div class="loginBox">
+            <div class="logo">
+                <img src="{% static 'app/image/logo-acme.png' %}">
+            </div> 
+            <Form action="" method="POST">
+                <h1>INICIAR SESIÓN</h1>
+                {% csrf_token %}
+                <label >Usuario</label>
+                
+                <div class ="inUser">
+                    <input type="text" class="form-control" placeholder="Ingrese su usuario">
+                </div>
+                
+                <label>Contraseña</label>
+                <div class="inPassword">
+                    <input type="password" class="form-control" placeholder="Ingrese su contraseña">
+                </div>  
+                
+                <button type="submit"  class="btn btn-succes btn-flat m-b-30 m-t-30">INGRESAR</button>
+            </Form>
+            <!--boton
+            <div id="boton">
+                <a href="FAdministrador.html" class="btn ">INGRESAR</a>
+            </div>
+            -->
+        </div>
+    </div>  
+  
+</body>
+</html>
+

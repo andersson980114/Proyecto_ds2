@@ -1,0 +1,55 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/ab566bad4a.js" crossorigin="anonymous"></script>  
+    {% block css %}
+
+    {% endblock %} 
+</head>
+<body>
+    <nav>
+        <div class="logo"><strong><img src="{% static 'app/image/logo-acme.png' %}" alt=""></strong></div>
+        <ul class="links"> 
+            <li><a href="#">Gestionar Usuarios</a>
+                <ul>
+                    <li><a href="{% static 'app/RegistroUsuario.html' %}">Registrar Usuario</a></li>
+                    <li><a href="{% static 'app/BuscarUsuario.html' %}">Buscar Usuario</a></li>
+                </ul>
+            </li>
+
+            <li><a href="#">Gestionar Procedimientos</a>
+                <ul>
+                    <li><a href="{% static 'app/RegistroProcedimiento.html' %}">Registrar Procedimiento</a></li>
+                    <li><a href="{% static 'app/BuscarProcedimiento.html' %}">Buscar Procedimiento</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Gestionar Productos</a>
+                <ul>
+                    <li><a href="{% static 'app/RegistroProducto.html' %}">Registrar Producto</a></li>
+                    <li><a href="{% static 'app/BuscarProducto.html' %}">Buscar Producto</a></li>
+                </ul>
+            </li>
+
+            <li><a href="{% static 'app/GenerarReporte.html' %}">Generar Reporte</a> </li>
+
+            <li> <a href="#"><span class="" ><i class="fas fa-user-tie"></i></span></a>
+                <ul>
+                   <li><a href="{% static 'app/Ingreso.html' %}"> Cerrar sesión</a></li>
+                </ul>
+            </li> 
+        </ul> 
+    </nav>
+
+    <div class="contenido">
+        <!--Base para agregar contenido-->
+        {% block contenido %}
+
+        {% endblock %}
+
+    </div>
+</body>
+</html>
