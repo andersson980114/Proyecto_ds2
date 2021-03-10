@@ -1,5 +1,7 @@
-from django.shortcuts import render 
+from django.shortcuts import render, redirect
 from .forms import UsuarioForm
+from django.contrib import messages
+from django.contrib.auth import authenticate, login
 # Create your views here.
 #1 crear vews 
 
@@ -18,12 +20,13 @@ def RegistroUsuario(request):
     if request.method == 'POST':
         formulario = UsuarioForm(data = request.POST)
         if formulario.is_valid():
-            formulario.save()
-            data["mensaje"] = "Usuario Guardado"
+            formulario.save() 
+            messages.success(request, "Usuario registrado")
+            return redirect(to=RegistroUsuario)
         else:
-            data["form"]= formulario
+             messages.success(request, "Ha ocurrido un error. Intentelo de nuevo")
 
-    return render(request, 'app/RegistroUsuario.html', data)
+    return render(request, 'registration/RegistroUsuario.html', data)
 
 
  

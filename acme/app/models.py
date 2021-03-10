@@ -25,6 +25,8 @@ class Usuario(models.Model):
     Cedula = models.CharField(max_length=20, blank=False, null=False)
     Contraseña = models.CharField(max_length=20, blank=False, null=False)
 
+    USERNAME_FIELD = 'Cedula'
+
     class Meta:
         verbose_name = 'Usuario'
         verbose_name_plural= 'Usuarios'
