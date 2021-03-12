@@ -1,0 +1,61 @@
+{% extends 'app/Base.html' %}
+
+{% load static %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'app/css/RegistroUsuario.css' %}"> 
+    <link rel="stylesheet" href="{% static 'app/css/BarraA.css' %}"> 
+    <title>SCVA_ADMINISTRADOR</title>
+{% endblock %} 
+
+ 
+{% block contenido %}
+    <div class="loginBox">
+        <h1>Modificar Usuario</h1> 
+        <form action=""  method="POST">
+            
+            {% csrf_token %} 
+            <div class="contenedor">
+                <div class="input-contenedor">
+                    <i class="far fa-address-card"></i>
+                     {{ form.username }}  
+                
+                    <i class="fas fa-user-edit"></i>
+                    {{form.Nombres}} 
+                </div> 
+
+                <div class="input-contenedor">
+                    <i class="fas fa-user-edit"></i>
+                    {{form.Apellidos}}
+                 
+                    <i class="fas fa-phone-volume"></i>
+                    {{form.Telefono}} 
+                
+                <div class="input-contenedor">
+                    <i class="fas fa-home"></i>
+                    {{form.Direccion}} 
+                 
+                    <i class="fas fa-at"></i>
+                    {{form.email}} 
+                </div>
+                
+                <div class="input-contenedor">
+                    <i class="far fa-user-circle"></i> 
+                     Cargo:   {{form.Cargo}} 
+                  
+                </div> 
+
+                <div class="input-contenedor">
+                    <i class="fas fa-unlock-alt"></i>
+                    {{form.password}}  
+                </div> 
+            </div>
+            
+            <a href="{% url 'BuscarUsuario' %}" >Cancelar</a> 
+            <button type="submit" id="boton" class="btn btn-primary">Actualizar</button>
+            
+
+        </form>    
+    </div>
+{% endblock %}

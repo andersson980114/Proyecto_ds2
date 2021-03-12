@@ -30,9 +30,9 @@
 
                 {% elif Usuario.Cargo == 2 %}
             
-                    <li><a href="RegistroCliente.html">Registrar Cueño</a></li>
-                    <li><a href="RegistroMascota.html">Registrar Paciente</a></li>
-                    <li><a href="{% static 'app/Factura.html' %}">Facturar</a></li>
+                    <li><a href="RegistroCliente">Registrar Cueño</a></li>
+                    <li><a href="RegistroMascota">Registrar Paciente</a></li>
+                    <li><a href="{% static 'app/RegistroMascota' %}">Registrar Paciente</a></li>
                     <li> <a href="#">{{user.first_name}}<span class="" ><i class="fas fa-chalkboard-teacher"></i></span></a>
                         <ul>
                             <li><a href="{% url 'logout' %}"> Cerrar sesión</a></li>
@@ -48,12 +48,12 @@
 
                     <li><a href="#">Gestionar Servicio</a>
                         <ul>
-                            <li><a href="{% static 'app/RegistroProcedimiento.html' %}">Registrar Servicio</a></li>
-                            <li><a href="{% static 'app/BuscarProcedimiento.html' %}">Buscar Servicio</a></li>
+                            <li><a href="#">Registrar Servicio</a></li>
+                            <li><a href="#">Buscar Servicio</a></li>
                         </ul>
                     </li>
 
-                    <li><a href="{% static 'app/GenerarReporte.html' %}">Generar Reporte</a> </li>
+                    <li><a href="#">Generar Reporte</a> </li>
 
                     <li> <a href="#">{{user.username}} <span class="" ><i class="fas fa-user-tie"></i></span></a>
                         

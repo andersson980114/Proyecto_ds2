@@ -23,7 +23,7 @@
                             <th>Cedula</th>
                             <th>Nombre</th>
                             <th>Apellido</th>
-                            <th>Cargo</th>
+                            <th>Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,8 +32,8 @@
                                 <td>{{Usuario.username}}</td>
                                 <td>{{Usuario.Nombres}}</td>
                                 <td>{{Usuario.Apellidos}}</td>
-                                <td>{{Usuario.Cargo}}</td> 
-                                
+                                <td> <a href="{% url 'ModificarUsuario' Usuario.id %}" class="btn btn-primary">Modificar</a></td> 
+                                <td> <a href="{% url 'EliminarUsuario' Usuario.id %}" class="btn btn-secundary">Eliminar</a></td> 
                             </tr> 
                         {% endfor%}
                     </tbody>

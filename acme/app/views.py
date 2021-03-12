@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
@@ -73,4 +73,31 @@ def RegistroUsuario(request):
 
 def BuscarUsuario(request):
     usuarios = Usuario.objects.all()
-    return render(request,'app/BuscarUsuario.html',{'usuarios': usuarios}) 
+    data = {
+        'usuarios':usuarios
+    }
+    return render(request,'app/BuscarUsuario.html', data) 
+
+def ModificarUsuario(request, id):
+    
+    usuario = get_object_or_404(Usuario, id = id)
+
+    data = {
+        'form' : UsuarioForm(instance = usuario)
+    }
+
+    if request.method == 'POST':
+        formulario = UsuarioForm(data = request.POST, instance = usuario, files =request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, "Usuario modificado correctamente")
+            return redirect(to = "BuscarUsuario")
+        data["form"]= formulario 
+              
+    return render(request, 'app/ModificarUsuario.html', data)
+
+def EliminarUsuario(request, id):
+    usuario = get_object_or_404(Usuario, id = id)
+    usuario.delete()
+    messages.success(request, "Usuario Eliminado correctamente")
+    return redirect(to = "BuscarUsuario")

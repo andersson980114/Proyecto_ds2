@@ -41,7 +41,7 @@ class UsuarioManager(BaseUserManager):
         return usuario
 
 class Usuario(AbstractBaseUser): 
-    
+    id = models.AutoField(primary_key=True)
     username  = models.CharField('Cedula', unique=True, max_length=20, blank=False, null=False)
     Nombres = models.CharField('Nombres',max_length=50, blank=False, null=False)
     Apellidos = models.CharField('Apellidos',max_length=50, blank=False, null=False)
