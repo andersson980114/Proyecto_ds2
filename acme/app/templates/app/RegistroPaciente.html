@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/ab566bad4a.js" crossorigin="anonymous"></script>
+    <title>SCVA_RegistroPaciente</title>
+    
+    <link rel="stylesheet" href="../Estilos/RegistroPaciente.css">
+    <link rel="stylesheet" href="../Estilos/BarraR.css"> 
+</head>
+<body>
+    <!--Menú-->
+    <nav>
+        <div class="logo"><strong><img src="../Estilos/image/logo-acme.png" alt=""></strong></div>
+            <ul class="links">
+                <li><a href="RegistroDueno.html">Registrar propietario</a></li>
+                <li><a href="RegistroPaciente.html">Registrar paciente</a></li>
+                <li><a href="Factura.html">Facturar</a></li>
+                <li> <a href="#"><span class="" ><i class="fas fa-chalkboard-teacher"></i></span></a>
+                <ul>
+                   <li><a href="Ingreso.html"> Cerrar sesión</a></li>
+               </ul>
+            </li>
+            </ul>
+    </nav> 
+    <!--Caja-->
+    <div class="loginBox"> 
+        <form class="RegistroPaciente">
+            <h1>Registro del paciente</h1>
+            <div class="contenedor">
+                <div class="input-contenedor">
+                    <i class="far fa-address-card"></i>
+                    <input type="number" placeholder="ID del dueño">
+                    
+                    <i class="far fa-edit"></i>
+                    <input type="text" placeholder="Nombre del paciente">
+                </div>
+            
+                <div class="input-contenedor">
+                    <i class="fas fa-paw"></i>
+                    <select name="especie" id="Especie" placeholder="Especie" >
+                        <option value="r1">Especie1</option>
+                        <option value="r2">Especie2</option>
+                        <option value="r3">Especie3</option>
+                    </select>
+                
+                    <i class="fas fa-paw"></i> 
+                    <select name="raza" id="Raza" placeholder="Raza" >
+                        <option value="r1">Raza1</option>
+                        <option value="r2">Raza3</option>
+                        <option value="r3">Raza2</option>
+                    </select> 
+                </div>
+            
+                <div class="input-contenedor">
+                    <i class="fas fa-transgender"></i>
+                    <select name="sexo" id="sexo" placeholder="sexo" >
+                        <option value="r1">Macho</option>
+                        <option value="r2">Hembra</option> 
+                    </select> 
+                </div>
+                <div class="input-contenedor"></div>
+                    <i class="far fa-calendar-alt"></i>
+                    <input type="date" placeholder="Fecha de nacimiento">
+                </div>
+             
+            <div id="boton">
+                <a href="RegistroPaciente.html" class="btn">Registrar</a>
+            </div>
+            
+        </form>
+    </div>
+</body>
+</html>

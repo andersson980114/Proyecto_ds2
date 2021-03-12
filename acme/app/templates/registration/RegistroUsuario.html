@@ -13,21 +13,21 @@
 {% block contenido %}
     <div class="loginBox">
         <h1>Registro de Usuario</h1> 
-        <form action="" class="UsuarioForm" method="POST">
+        <form action=""  method="POST">
             
             {% csrf_token %} 
             <div class="contenedor">
                 <div class="input-contenedor">
                     <i class="far fa-address-card"></i>
-                     {{ form.Cedula }}  
+                     {{ form.username }}  
                 
                     <i class="fas fa-user-edit"></i>
-                    {{form.Nombre}} 
+                    {{form.Nombres}} 
                 </div> 
 
                 <div class="input-contenedor">
                     <i class="fas fa-user-edit"></i>
-                    {{form.Apellido}}
+                    {{form.Apellidos}}
                  
                     <i class="fas fa-phone-volume"></i>
                     {{form.Telefono}} 
@@ -37,29 +37,25 @@
                     {{form.Direccion}} 
                  
                     <i class="fas fa-at"></i>
-                    {{form.Correo}} 
+                    {{form.email}} 
                 </div>
                 
                 <div class="input-contenedor">
                     <i class="far fa-user-circle"></i> 
-                    {{form.Cargo}} 
-                 
-                    <i class="far fa-user-circle"></i> 
-                    {{form.Estado}} 
+                     Cargo:   {{form.Cargo}} 
+                  
                 </div> 
 
                 <div class="input-contenedor">
                     <i class="fas fa-unlock-alt"></i>
-                    {{form.Contraseña}}  
-                </div>
-
-
-
+                    {{form.password}}  
+                </div> 
             </div>
+            
             
             <button type="submit" id="boton" class="btn">REGISTRAR</button>
 
-        </form>   
+        </form>    
     </div>
 {% endblock %}
 

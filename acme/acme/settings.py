@@ -9,28 +9,29 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
+
 import os
 from pathlib import Path
 from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '+&!dt#heqepp#a)nh=fn3rmw*h414yleh=nc!w&-_uk2e3y56&'
+SECRET_KEY = '!9jlzgz2+%t$d4fzdn8x=8@ww-ef@34b-w%67610j74#ey!wnw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
-LOGIN_REDIRECT_URL = '/RegistroUsuario/'
-LOGOUT_REDIRECT_URL = '/'
-
+LOGIN_REDIRECT_URL = 'Index'
+LOGOUT_REDIRECT_URL = '/accounts/login'
 
 # Application definition
 
@@ -81,7 +82,7 @@ WSGI_APPLICATION = 'acme.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME':'biblio',
     }
 }
 
@@ -116,7 +117,8 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True 
+USE_TZ = True
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
@@ -124,3 +126,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
+

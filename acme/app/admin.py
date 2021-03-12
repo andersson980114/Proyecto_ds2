@@ -1,6 +1,7 @@
-from django.contrib import admin 
-from .models import Usuario
+from django.contrib import admin
+from app.models import Usuario, Cliente, Mascota
 
-#4 importar y registrar modelos
-#despues de crear el modelo diligenciar el forms
+# Register your models here.
 admin.site.register(Usuario)
+admin.site.register(Cliente)
+admin.site.register(Mascota)

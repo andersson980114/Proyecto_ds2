@@ -1,0 +1,46 @@
+{% extends 'app/Base.html' %}
+
+{% load static %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'app/css/RegistroCliente.css' %}"> 
+    <link rel="stylesheet" href="{% static 'app/css/BarraA.css' %}"> 
+    <title>SCVA_RECEPCIONISTA</title>
+{% endblock %} 
+
+{% block contenido %} 
+    <div class="loginBox"> 
+        <h1>Registro del Cliente</h1>
+        <form   action=""  method="POST">
+            {% csrf_token %}  
+            <div class="contenedor">
+                <div class="input-contenedor">
+                    <i class="far fa-address-card"></i>
+                    {{form.Cedula}}
+                
+                    <i class="fas fa-user-edit"></i>
+                    {{form.Nombre}}
+                </div>
+             
+                <div class="input-contenedor">
+                    <i class="fas fa-user-edit"></i>
+                    {{form.Apellido}}
+                 
+                    <i class="fas fa-phone-volume"></i>
+                    {{form.Telefono}}
+                </div>
+             
+                <div class="input-contenedor">
+                    <i class="fas fa-home"></i>
+                    {{form.Direccion}}
+                 
+                    <i class="fas fa-at"></i>
+                    {{form.Correo}}
+                </div>
+            
+            <button type="submit" id="boton" class="btn">Registrar y añadir mascota</button>
+            
+        </form>
+    </div>
+{% endblock %}

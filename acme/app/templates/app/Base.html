@@ -1,4 +1,4 @@
-{% load static %} 
+{% load static %}  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,67 +14,74 @@
     
     <nav>
         <div class="logo"><strong><img src="{% static 'app/image/logo-acme.png' %}" alt=""></strong></div>
-        <ul class="links">
-            {% if user.Cargo == 1 and user.Estado == 1 and user.is_autheticated %}
-                
-                <li><a href="{% static 'app/Consulta.html' %}">Registrar consulta</a></li>
-                <li><a href="{% static 'app/Historial.html' %}">Consultar historial </a></li>
-                <li> <a href="#"><span class="" ><i class="fas fa-user-md"></i></span>{{user.username}}</a>
-                    <ul>
-                        <li><a href="{% static 'app/Ingreso.html' %}"> Cerrar sesión</a></li>
-                    </ul>
-                </li>  
-            {% endif%}
+        <ul class="links"> 
 
-            {% if user.Cargo == 2 and user.Estado == 2 and user.is_autheticated %}
-                
-                <li><a href="{% static 'app/RegistroDueno.html' %}">Registrar dueño</a></li>
-                <li><a href="{% static 'app/RegistroPaciente.html' %}">Registrar paciente</a></li>
-                <li><a href="{% static 'app/Factura.html' %}">Facturar</a></li>
-                <li> <a href="#"><span class="" ><i class="fas fa-chalkboard-teacher"></i></span>{{user.username}}</a>
-                    <ul>
-                        <li><a href="{% static 'app/Ingreso.html' %}"> Cerrar sesión</a></li>
-                    </ul>
-                </li> 
-            {% else %}  
-                <li><a href="#">Gestionar Usuarios</a>
-                    <ul>
-                        <li><a href="{% static 'app/RegistroUsuario.html' %}">Registrar Usuario</a></li>
-                        <li><a href="{% static 'app/BuscarUsuario.html' %}">Buscar Usuario</a></li>
-                    </ul>
-                </li>
+            {% if user.is_authenticated %}
 
-                <li><a href="#">Gestionar Procedimientos</a>
-                    <ul>
-                        <li><a href="{% static 'app/RegistroProcedimiento.html' %}">Registrar Procedimiento</a></li>
-                        <li><a href="{% static 'app/BuscarProcedimiento.html' %}">Buscar Procedimiento</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Gestionar Productos</a>
-                    <ul>
-                        <li><a href="{% static 'app/RegistroProducto.html' %}">Registrar Producto</a></li>
-                        <li><a href="{% static 'app/BuscarProducto.html' %}">Buscar Producto</a></li>
-                    </ul>
-                </li>
-
-                <li><a href="{% static 'app/GenerarReporte.html' %}">Generar Reporte</a> </li>
-
-                <li> <a href="#"><span class="" ><i class="fas fa-user-tie"></i></span>{{user.username}}</a>
+                {% if  user.Cargo == 1 %}
                     
-                    <ul>
-                    <li><a href="{% static 'app/Ingreso.html' %}"> Cerrar sesión</a></li>
-                    </ul>
-                </li> 
+                    <li><a href="{% static 'app/Consulta.html' %}">Registrar consulta</a></li>
+                    <li><a href="{% static 'app/Historial.html' %}">Consultar historial </a></li>
+                    <li> <a href="#">{{user.first_name}} <span class="" ><i class="fas fa-user-md"></i></span></a>
+                        <ul>
+                            <li><a href="{% url 'logout' %}"> Cerrar sesión</a></li>
+                        </ul>
+                    </li>  
+
+                {% elif user.Cargo == 2 %}
             
-            {% endif%} 
+                    <li><a href="{% static 'app/RegistroDueno.html' %}">Registrar dueño</a></li>
+                    <li><a href="{% static 'app/RegistroPaciente.html' %}">Registrar paciente</a></li>
+                    <li><a href="{% static 'app/Factura.html' %}">Facturar</a></li>
+                    <li> <a href="#">{{user.first_name}}<span class="" ><i class="fas fa-chalkboard-teacher"></i></span></a>
+                        <ul>
+                            <li><a href="{% url 'logout' %}"> Cerrar sesión</a></li>
+                        </ul>
+                    </li> 
+                {% else %}  
+                    <li><a href="#">Gestionar Usuarios</a>
+                        <ul>
+                            <li><a href="RegistroUsuario">Registrar Usuario</a></li>
+                            <li><a href="{% static 'app/BuscarUsuario.html' %}">Buscar Usuario</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#">Gestionar Procedimientos</a>
+                        <ul>
+                            <li><a href="{% static 'app/RegistroProcedimiento.html' %}">Registrar Procedimiento</a></li>
+                            <li><a href="{% static 'app/BuscarProcedimiento.html' %}">Buscar Procedimiento</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Gestionar Productos</a>
+                        <ul>
+                            <li><a href="{% static 'app/RegistroProducto.html' %}">Registrar Producto</a></li>
+                            <li><a href="{% static 'app/BuscarProducto.html' %}">Buscar Producto</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="{% static 'app/GenerarReporte.html' %}">Generar Reporte</a> </li>
+
+                    <li> <a href="#"><span class="" ><i class="fas fa-user-tie"></i></span>{{user.username}}</a>
+                        
+                        <ul>
+                        <li><a href="{% url 'logout' %}"> Cerrar sesión</a></li>
+                        </ul>
+                    </li> 
+                
+                {% endif %} 
+            
+            {% else %}
+                <li><a href="{% url 'logout' %}">INICIAR SESION</a>
+            {% endif %}
+            
         </ul> 
 
     </nav>
-
+    
     <div class="contenido">
         <!--Base para agregar contenido-->
         {% block contenido %}
-
+       
         {% endblock %}
 
     </div>
