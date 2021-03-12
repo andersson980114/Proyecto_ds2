@@ -1,0 +1,49 @@
+{% extends 'app/Base.html' %}
+
+{% load static %}
+
+
+{% block css %} 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'app/css/RegistroUsuario.css' %}"> 
+    <link rel="stylesheet" href="{% static 'app/css/BarraA.css' %}"> 
+    <title>SCVA_Usuarios</title>
+    
+{% endblock%}
+
+{% block contenido %}
+
+    {% if usuarios %}
+        <div class="loginBox"> 
+            <h1>Usuarios Registrados</h1> 
+            <div class="card"> 
+                <table class = "table table-striped table-hover ">
+                    <thead>
+                        <tr>
+                            <th>Cedula</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Cargo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for Usuario in usuarios %}
+                            <tr>
+                                <td>{{Usuario.username}}</td>
+                                <td>{{Usuario.Nombres}}</td>
+                                <td>{{Usuario.Apellidos}}</td>
+                                <td>{{Usuario.Cargo}}</td> 
+                                
+                            </tr> 
+                        {% endfor%}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% else %}
+        <div class="loginBox"> 
+            <h1>No existen usuarios registrados</h1> 
+        </div>
+    {% endif %}
+    
+{% endblock %}

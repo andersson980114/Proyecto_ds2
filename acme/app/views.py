@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.contrib.auth import authenticate, login
 from .models import Usuario, Cliente
-from .forms import UsuarioForm, ClienteForm
+from .forms import UsuarioForm, ClienteForm, MascotaForm
 from django.contrib.auth.models import User 
 from django.contrib.auth.decorators import login_required
 
@@ -31,6 +31,23 @@ def RegistroCliente(request):
 
     return render(request, 'app/RegistroCliente.html', data)
 
+
+def RegistroMascota(request):
+    data = {
+        'form' : MascotaForm()
+    }
+
+    if request.method == 'POST':
+        formulario = MascotaForm(data = request.POST)
+        if formulario.is_valid():
+            formulario.save() 
+            messages.success(request, "Mascota registrada")
+            return redirect(to=RegistroMascota)
+        else:
+            messages.success(request, "Ha ocurrido un error. Intentelo de nuevo")
+
+    return render(request, 'app/RegistroMascota.html', data)
+
 @login_required
 def RegistroUsuario(request):
     form_class = UsuarioForm()
@@ -53,3 +70,7 @@ def RegistroUsuario(request):
             form_class.save()
             return redirect('/')
         return render(request,'registration/RegistroUsuario.html',context) 
+
+def BuscarUsuario(request):
+    usuarios = Usuario.objects.all()
+    return render(request,'app/BuscarUsuario.html',{'usuarios': usuarios}) 

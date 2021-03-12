@@ -104,7 +104,7 @@ class Mascota(models.Model):
       
     class Meta:
         verbose_name = 'Mascota'
-        verbose_name_plural= 'Mascota'
+        verbose_name_plural= 'Mascotas'
         ordering = ['Nombre'] #se ordena según el parametro indicado(ej: nombre, apellido o cedula)
 
     def _str_(self):

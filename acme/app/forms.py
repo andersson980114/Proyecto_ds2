@@ -2,7 +2,7 @@ from django import forms
 
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
-from .models import Usuario, Cliente
+from .models import Usuario, Cliente, Mascota
 
 class UsuarioForm(forms.ModelForm): 
 
@@ -70,3 +70,30 @@ class ClienteForm(forms.ModelForm):
             'Cedula': forms.TextInput(
                 attrs = { 'class': 'form.control', 'placeholder': 'Ingrese la Cedula del Cliente' })
         }
+
+
+
+class MascotaForm(forms.ModelForm):  
+    #Llave Foraneas
+     
+
+    class Meta:
+        model = Mascota
+                 #Datos con los que se llenara el formulario (atributos de la tabla sin el ID)
+        fields = ['Nombre', 'Especie', 'Raza', 'Fecha_nacimiento',  'Sexo', 'Cliente_id']
+         
+        widgets = {
+            'Nombre': forms.TextInput(
+                attrs = {'class': 'form.control', 'placeholder': 'Ingrese el Nombre de la Mascota' }),
+            'Especie': forms.TextInput(
+                attrs = {  'class': 'form.control', 'placeholder': 'Ingrese la Especie ' }),
+            'Raza': forms.TextInput(
+                attrs = { 'class': 'form.control',  'placeholder': 'Ingrese la Raza' }),
+            'Fecha_nacimiento': forms.SelectDateWidget( 
+                attrs = {'class': 'form.control', 'placeholder': 'Ingrese la Fecha de Nacimiento' }),
+            'Sexo': forms.Select( 
+                attrs = { 'class': 'form.control','placeholder': 'Ingrese el Sexo'  }), 
+            'Cliente_id': forms.Select(
+                attrs = { 'class': 'form.control', 'placeholder': 'Ingrese Dueño'  })#llave foranea
+        }
+    

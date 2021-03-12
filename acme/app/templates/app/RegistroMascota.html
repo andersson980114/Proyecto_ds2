@@ -1,0 +1,49 @@
+{% extends 'app/Base.html' %}
+
+{% load static %}
+
+
+{% block css %} 
+    <link rel="stylesheet" href="{% static 'app/css/RegistroUsuario.css' %}"> 
+    <link rel="stylesheet" href="{% static 'app/css/BarraA.css' %}"> 
+    <title>SCVA_RegistroPaciente</title>
+    
+{% endblock%}
+
+{% block contenido %}
+    <div class="loginBox"> 
+            <h1>Registro del Paciente</h1>
+        <form   action=""  method="POST">
+            
+            {% csrf_token %} 
+            <div class="contenedor">
+                <div class="input-contenedor">
+                    <i class="far fa-address-card"></i>
+                    Cliente: {{form.Cliente_id}}
+                  
+                    <i class="far fa-edit"></i>
+                    {{form.Nombre}}
+                </div> 
+
+                <div class="input-contenedor">
+                    <i class="fas fa-paw"></i>
+                   {{form.Especie}}
+                
+                    <i class="fas fa-paw"></i> 
+                    {{form.Raza}}
+                </div> 
+
+                <div class="input-contenedor">
+                    <i class="fas fa-transgender"></i>
+                  Sexo: {{form.Sexo}}
+                </div>
+                <div class="input-contenedor"></div>
+                    {{form.Fecha_nacimiento}}
+                </div>
+             
+            <button type="submit" id="boton" class="btn">Registrar Mascota</button>
+            
+        </form>
+    </div>
+
+{% endblock%}
