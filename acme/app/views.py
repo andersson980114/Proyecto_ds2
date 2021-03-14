@@ -8,6 +8,7 @@ from .models import Usuario, Cliente
 from .forms import UsuarioForm, ClienteForm, MascotaForm
 from django.contrib.auth.models import User 
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 # Create your views here.
 #1 crear vews 
@@ -47,6 +48,21 @@ def RegistroCliente(request):
              messages.success(request, "Ha ocurrido un error. Intentelo de nuevo")
 
     return render(request, 'app/RegistroCliente.html', data)
+
+@login_required
+def ListarClientes(request):
+    queryset = request.GET.get("Buscar")
+    clientes = Cliente.objects.all()
+
+    if queryset:
+        clientes = Cliente.objects.filter(
+            Q(Cedula = queryset)
+        ).distinct()
+     
+    data = {
+        'clientes':clientes
+    }
+    return render(request, 'app/ListarClientes.html', data)
 
 @login_required
 def RegistroMascota(request):
@@ -121,3 +137,4 @@ def EliminarUsuario(request, id):
     usuario.delete()
     messages.success(request, "Usuario Eliminado correctamente")
     return redirect(to = "BuscarUsuario")
+

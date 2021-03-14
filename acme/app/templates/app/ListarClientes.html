@@ -1,0 +1,64 @@
+{% extends 'app/BaseR.html' %}
+
+{% load static %}
+
+
+{% block cssR %} 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'app/css/ListarClientes.css' %}"> 
+<link rel="stylesheet" href="{% static 'app/css/BarraA.css' %}"> 
+<title>SCVA_Usuarios</title>
+{% endblock%}
+
+{% block contenidoR %}
+
+    {% if clientes %}
+        <div class="loginBox"> 
+            <h1>Clientes Registrados</h1> 
+            <!--Barra de busqueda-->
+            <div class="row">
+                <div class="col-md-12 search">
+                    <form method="GET">
+                        <div id="custom-search-innput">
+                            <div class="input-group col-md-12">
+                                <input type="text" class="form-control" placeholder="Buscar..." name="Buscar">
+                                <span class="input-group-list"> 
+                                   
+                                    <button type="submit" class="btn btn-success"> <i class="fas fa-search"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <br>
+            <div class="card"> 
+                <table class = "table table-striped table-hover ">
+                    <thead>
+                        <tr>
+                            <th>Cedula</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for Cliente in clientes %}
+                            <tr>
+                                <td>{{Cliente.Cedula}}</td>
+                                <td>{{Cliente.Nombre}}</td>
+                                <td>{{Cliente.Apellido}}</td> 
+                                <td> <a href="#" class="btn btn-primary">Añadir Mascota</a></td> 
+                            </tr> 
+                        {% endfor%}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% else %}
+        <div class="loginBox"> 
+            <h1>No existen clientes registrados</h1> 
+        </div>
+    {% endif %}
+    
+{% endblock %}

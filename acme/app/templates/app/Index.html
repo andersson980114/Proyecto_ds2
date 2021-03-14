@@ -17,14 +17,14 @@
                     </li>  
 	{% elif type == 2 %}
 
-		    <li><a href="RegistroCliente">Registrar dueño</a></li>
-                    <li><a href="RegistroMascota">Registrar paciente</a></li>
-                    <li><a href="{% static 'app/Factura.html' %}">Facturar</a></li>
-                    <li> <a href="#">{{user.first_name}}<span class="" ><i class="fas fa-chalkboard-teacher"></i></span></a>
-                        <ul>
-                            <li><a href="{% url 'logout' %}"> Cerrar sesión</a></li>
-                        </ul>
-                    </li> 
+        <li><a href="RegistroCliente">Registrar Cliente</a></li>
+        <li><a href="ListarClientes">Registrar Mascota</a></li>
+        <li><a href="Facturar">Facturar</a></li>
+        <li> <a href="#">{{user.first_name}}<span class="" ><i class="fas fa-chalkboard-teacher"></i></span></a>
+            <ul>
+                <li><a href="{% url 'logout' %}"> Cerrar sesión</a></li>
+            </ul>
+        </li>  
 	  {% elif type == None %}
                 <li><a href="{% url 'logout' %}">INICIAR SESION</a>
 	  {% else %}
