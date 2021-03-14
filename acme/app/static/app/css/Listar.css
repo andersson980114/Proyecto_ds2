@@ -5,6 +5,14 @@ body{
     background-size: cover ;
     font-family: sans-serif;
     height: 100vh;
+    
+}
+
+.contenido{
+    margin-top: 10% ;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 img{
@@ -15,17 +23,12 @@ img{
 }
 
 .loginBox{
-    margin-top: 240px;
-    margin-bottom: 150px;
+    margin: auto;
     width: 720px;
-    height: 480px;
+    height: 100rm;
     background: #000000;
     opacity: 80%;
-    color: #fff;
-    top: 20%;
-    left: 50%;
-    position: absolute;
-    transform: translate(-50%, -50%);
+    color: #fff;   
     box-sizing: border-box; 
     padding: 3% 3%; 
     border-radius: 7px;
