@@ -13,8 +13,25 @@ from django.contrib.auth.decorators import login_required
 #1 crear vews 
 
 def Index(request):
-    return render(request, 'app/Index.html')
+    if  request.user.is_authenticated:
+        usuario = request.user.username
+    else:
+        usuario = None
+    if usuario:
+        try:
+            usuario_db = Usuario.objects.get(username=usuario)
+            cargo = usuario_db.Cargo
+        except :
+            cargo = 'Admin'
+    else:
+        cargo=None
+    context = {
+            'type':cargo
+            }
+    return render(request, 'app/Index.html',context)
 
+
+@login_required
 def RegistroCliente(request):
     data = {
         'form' : ClienteForm()
@@ -48,15 +65,16 @@ def RegistroMascota(request):
 
     return render(request, 'app/RegistroMascota.html', data)
 
+ 
 @login_required
 def RegistroUsuario(request):
     form_class = UsuarioForm()
-    context = {
+    data = {
             'form':form_class,
             }
 
     if request.method == 'GET':
-        return render(request,'registration/RegistroUsuario.html',context)
+        return render(request,'registration/RegistroUsuario.html',data)
     else:
         form_class = UsuarioForm(request.POST)
         if form_class.is_valid():
@@ -65,11 +83,13 @@ def RegistroUsuario(request):
             email = request.POST['email']
             name = request.POST['Nombres']
             last_name = request.POST['Apellidos']
+            cargo = int(request.POST['Cargo'])
             user = User.objects.create_user(username=user,password=p1,email=email,first_name=name,last_name=last_name)
             user.save()
-            form_class.save()
-            return redirect('/')
-        return render(request,'registration/RegistroUsuario.html',context) 
+            form_class.save()   
+            return redirect(to=RegistroUsuario)
+        return render(request,'registration/RegistroUsuario.html',data) 
+
 
 def BuscarUsuario(request):
     usuarios = Usuario.objects.all()

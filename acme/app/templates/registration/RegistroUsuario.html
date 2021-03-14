@@ -1,16 +1,14 @@
-{% extends 'app/Base.html' %}
+{% extends 'app/BaseA.html' %}
 
 {% load static %}
 
-
-{% block css %}
+{% block cssA %}
     <link rel="stylesheet" href="{% static 'app/css/RegistroUsuario.css' %}"> 
     <link rel="stylesheet" href="{% static 'app/css/BarraA.css' %}"> 
     <title>SCVA_ADMINISTRADOR</title>
 {% endblock %} 
-
  
-{% block contenido %}
+{% block contenidoA %}
     <div class="loginBox">
         <h1>Registro de Usuario</h1> 
         <form action=""  method="POST">

@@ -6,29 +6,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/ab566bad4a.js" crossorigin="anonymous"></script>  
-    {% block css %}
+    {% block cssR %}
 
     {% endblock %} 
 </head>
-<body>
-    
+<body> 
     <nav>
         <div class="logo"><strong><img src="{% static 'app/image/logo-acme.png' %}" alt=""></strong></div>
-        <ul class="links"> 
-
-
-                    
-	  {% block navbar %} 
-          {%endblock%}
-                                
-            
+        <ul class="links">                     
+            <li><a href="RegistroCliente">Registrar Cueño</a></li>
+            <li><a href="RegistroMascota">Registrar Paciente</a></li>
+            <li><a href="Facturar">Facrutar</a></li>
+            <li> <a href="#">{{user.first_name}}<span class="" ><i class="fas fa-chalkboard-teacher"></i></span></a>
+                <ul>
+                    <li><a href="{% url 'logout' %}"> Cerrar sesión</a></li>
+                </ul>
+            </li>  
         </ul> 
 
     </nav>
     
     <div class="contenido">
         <!--Base para agregar contenido-->
-        {% block contenido %}
+        {% block contenidoR %}
        
         {% endblock %}
 
@@ -38,4 +38,5 @@
 <footer>
 
 </footer>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </html>

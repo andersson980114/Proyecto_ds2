@@ -1,10 +1,59 @@
 {% extends 'app/Base.html' %}
 {% load static %}
+
 {% block css %} 
     <link rel="stylesheet" href="{% static 'app/css/BarraA.css' %}"> 
     <title>SCVA_INICIO</title>
 {% endblock %} 
 
+{% block navbar %}
+	{% if type == 1 %}
+	  <li><a href="{% static 'app/Consulta.html' %}">Registrar consulta</a></li>
+                    <li><a href="{% static 'app/Historial.html' %}">Consultar historial </a></li>
+                    <li> <a href="#">{{user.first_name}} <span class="" ><i class="fas fa-user-md"></i></span></a>
+                        <ul>
+                            <li><a href="{% url 'logout' %}"> Cerrar sesión</a></li>
+                        </ul>
+                    </li>  
+	{% elif type == 2 %}
+
+		    <li><a href="RegistroCliente">Registrar dueño</a></li>
+                    <li><a href="RegistroMascota">Registrar paciente</a></li>
+                    <li><a href="{% static 'app/Factura.html' %}">Facturar</a></li>
+                    <li> <a href="#">{{user.first_name}}<span class="" ><i class="fas fa-chalkboard-teacher"></i></span></a>
+                        <ul>
+                            <li><a href="{% url 'logout' %}"> Cerrar sesión</a></li>
+                        </ul>
+                    </li> 
+	  {% elif type == None %}
+                <li><a href="{% url 'logout' %}">INICIAR SESION</a>
+	  {% else %}
+	  <li><a href="#">Gestionar Usuarios</a>
+                        <ul>
+                            <li><a href="RegistroUsuario">Registrar Usuario</a></li>
+                            <li><a href="BuscarUsuario">Buscar Usuario</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#">Gestionar Servicios</a>
+                        <ul>
+                            <li><a href="{% static 'app/RegistroProcedimiento.html' %}">Registrar Servicio</a></li>
+                            <li><a href="{% static 'app/BuscarProcedimiento.html' %}">Buscar Servicio</a></li>
+                        </ul>
+                    </li> 
+
+                    <li><a href="{% static 'app/GenerarReporte.html' %}">Generar Reporte</a> </li>
+
+                    <li> <a href="#">{{user.username}} <span class="" ><i class="fas fa-user-tie"></i></span></a>
+                        
+                        <ul>
+                        <li><a href="{% url 'logout' %}"> Cerrar sesión</a></li>
+                        </ul>
+                    </li> 
+                
+        {% endif %} 
+
+{%endblock%}
 {% block contenido %}
 
 {% endblock %}
