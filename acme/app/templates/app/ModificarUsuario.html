@@ -11,7 +11,7 @@
 
  
 {% block contenidoA %}
-    <div class="loginBox">
+    <div class="loginBox"> 
         <h1>Modificar Usuario</h1> 
         <form action=""  method="POST">
             
@@ -24,14 +24,15 @@
                     <i class="fas fa-user-edit"></i>
                     {{form.Nombres}} 
                 </div> 
-
+                <br>
                 <div class="input-contenedor">
                     <i class="fas fa-user-edit"></i>
                     {{form.Apellidos}}
                  
                     <i class="fas fa-phone-volume"></i>
                     {{form.Telefono}} 
-                
+                </div>
+                <br>
                 <div class="input-contenedor">
                     <i class="fas fa-home"></i>
                     {{form.Direccion}} 
@@ -39,23 +40,17 @@
                     <i class="fas fa-at"></i>
                     {{form.email}} 
                 </div>
-                
+                <br>
                 <div class="input-contenedor">
                     <i class="far fa-user-circle"></i> 
                      Cargo:   {{form.Cargo}} 
-                  
-                </div> 
-
-                <div class="input-contenedor">
+                   
                     <i class="fas fa-unlock-alt"></i>
                     {{form.password}}  
                 </div> 
-            </div>
-            
-            <a href="{% url 'BuscarUsuario' %}" >Cancelar</a> 
+            </div> 
             <button type="submit" id="boton" class="btn btn-primary">Actualizar</button>
-            
-
+            <a href="{% url 'BuscarUsuario' %}" class="btn2">Cancelar</a>
         </form>    
     </div>
 {% endblock %}

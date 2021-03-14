@@ -48,7 +48,7 @@ def RegistroCliente(request):
 
     return render(request, 'app/RegistroCliente.html', data)
 
-
+@login_required
 def RegistroMascota(request):
     data = {
         'form' : MascotaForm()
@@ -90,7 +90,7 @@ def RegistroUsuario(request):
             return redirect(to=RegistroUsuario)
         return render(request,'registration/RegistroUsuario.html',data) 
 
-
+@login_required
 def BuscarUsuario(request):
     usuarios = Usuario.objects.all()
     data = {
@@ -98,10 +98,9 @@ def BuscarUsuario(request):
     }
     return render(request,'app/BuscarUsuario.html', data) 
 
+@login_required
 def ModificarUsuario(request, id):
-    
     usuario = get_object_or_404(Usuario, id = id)
-
     data = {
         'form' : UsuarioForm(instance = usuario)
     }
@@ -116,6 +115,7 @@ def ModificarUsuario(request, id):
               
     return render(request, 'app/ModificarUsuario.html', data)
 
+@login_required
 def EliminarUsuario(request, id):
     usuario = get_object_or_404(Usuario, id = id)
     usuario.delete()
