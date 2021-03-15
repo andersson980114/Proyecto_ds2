@@ -75,7 +75,22 @@ class Usuario(AbstractBaseUser):
     def is_staff(self):
         return self.usuario_administrador
 
+class Servicio(models.Model):
+    id = models.AutoField(primary_key=True)
+    Codigo = models.CharField('Codigo',unique = True, max_length=50, blank=False, null=False)
+    Nombre = models.CharField('Nombre',max_length=50, blank=False, null=False)
+    Cantidad = models.IntegerField('Cantidad', blank=False, null=False)
+    Valor = models.IntegerField('Valor', blank=False, null=False)
 
+    class Meta:
+        verbose_name = 'Servicio'
+        verbose_name_plural= 'Servicios'
+        ordering = ['Codigo'] #se ordena según el parametro indicado(ej: nombre, apellido o cedula)
+
+    def _str_(self):
+        return f'{self.Codigo},{self.Nombre}'
+    
+    
 class Cliente(models.Model):
     id = models.AutoField(primary_key=True)
     Nombre = models.CharField('Nombre',max_length=50, blank=False, null=False)

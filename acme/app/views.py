@@ -4,8 +4,8 @@ from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.contrib.auth import authenticate, login
-from .models import Usuario, Cliente
-from .forms import UsuarioForm, ClienteForm, MascotaForm
+from .models import Usuario, Cliente, Mascota, Servicio
+from .forms import UsuarioForm, ClienteForm, MascotaForm, ServicioForm
 from django.contrib.auth.models import User 
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
@@ -137,4 +137,62 @@ def EliminarUsuario(request, id):
     usuario.delete()
     messages.success(request, "Usuario Eliminado correctamente")
     return redirect(to = "BuscarUsuario")
+
+@login_required 
+def RegistroServicio(request):
+    data = {
+        'form' : ServicioForm()
+    }
+
+    if request.method == 'POST':
+        formulario = ServicioForm(data = request.POST)
+        if formulario.is_valid():
+            formulario.save() 
+            messages.success(request, "Servicio Agregado")
+            return redirect(to=RegistroServicio)
+        else:
+            messages.success(request, "Ha ocurrido un error. Intentelo de nuevo")
+    return render(request, 'app/RegistroServicio.html', data)
+
+@login_required
+def BuscarServicio(request):
+
+    queryset = request.GET.get("Buscar")
+    servicios = Servicio.objects.all()
+
+    if queryset:
+        servicios = Servicio.objects.filter(
+            Q(Codigo = queryset) |
+            Q(Nombre = queryset)
+        ).distinct()
+    data = {
+        'servicios':servicios
+    }
+    return render(request,'app/BuscarServicio.html', data) 
+    
+
+@login_required
+def ModificarServicio(request, id):
+    servicio = get_object_or_404(Servicio, id = id)
+    data = {
+        'form' : ServicioForm(instance = servicio)
+    }
+
+    if request.method == 'POST':
+        formulario = ServicioForm(data = request.POST, instance = servicio, files =request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, "Servicio modificado correctamente")
+            return redirect(to = "BuscarServicio")
+        data["form"]= formulario 
+              
+    return render(request, 'app/ModificarServicio.html', data)
+
+@login_required
+def EliminarServicio(request, id):
+    servicio = get_object_or_404(Servicio, id = id)
+    servicio.delete()
+    messages.success(request, "Servicio Eliminado correctamente")
+    return redirect(to = "BuscarServicio")
+
 

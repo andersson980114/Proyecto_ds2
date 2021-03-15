@@ -2,7 +2,7 @@ from django import forms
 
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
-from .models import Usuario, Cliente, Mascota
+from .models import Usuario, Cliente, Mascota, Servicio
 
 class UsuarioForm(forms.ModelForm): 
 
@@ -73,15 +73,11 @@ class ClienteForm(forms.ModelForm):
 
 
 
-class MascotaForm(forms.ModelForm):  
-    #Llave Foraneas
-     
-
+class MascotaForm(forms.ModelForm):   
     class Meta:
         model = Mascota
                  #Datos con los que se llenara el formulario (atributos de la tabla sin el ID)
         fields = ['Nombre', 'Especie', 'Raza', 'Fecha_nacimiento',  'Sexo', 'Cliente_id']
-         
         widgets = {
             'Nombre': forms.TextInput(
                 attrs = {'class': 'form.control', 'placeholder': 'Ingrese el Nombre de la Mascota' }),
@@ -97,3 +93,18 @@ class MascotaForm(forms.ModelForm):
                 attrs = { 'class': 'form.control', 'placeholder': 'Ingrese Dueño'  })#llave foranea
         }
     
+class ServicioForm(forms.ModelForm):   
+    class Meta:
+        model = Servicio
+                 #Datos con los que se llenara el formulario (atributos de la tabla sin el ID)
+        fields = ['Codigo', 'Nombre', 'Cantidad', 'Valor']
+        widgets = {
+            'Codigo': forms.TextInput(
+                attrs = {'class': 'form.control', 'placeholder': 'Ingrese el Codigo del Producto' }),
+            'Nombre': forms.TextInput(
+                attrs = {  'class': 'form.control', 'placeholder': 'Ingrese el Nombre ' }),
+            'Cantidad': forms.NumberInput(
+                attrs = { 'class': 'form.control',  'placeholder': 'Ingrese la Cantidad' }),
+            'Valor': forms.NumberInput( 
+                attrs = {'class': 'form.control', 'placeholder': 'Ingrese el Valor' }) #llave foranea
+        }

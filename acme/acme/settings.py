@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
 import os
 from pathlib import Path
 from django.urls import reverse_lazy
@@ -31,7 +30,6 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 #MESSAGE_STORAGE = "django.contrib.messages.storage.CookieStorage"
-
 LOGIN_REDIRECT_URL = 'Index'
 LOGOUT_REDIRECT_URL = '/accounts/login'
 

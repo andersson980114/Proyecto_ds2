@@ -1,0 +1,36 @@
+{% extends 'app/BaseA.html' %}
+
+{% load static %}
+
+
+{% block cssA %}
+    <link rel="stylesheet" href="{% static 'app/css/BarraA.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/RegistrarProducto.css' %}">
+    <title>SCVA_ADMINISTRADOR</title>
+{% endblock %} 
+    
+     
+{% block contenidoA %}
+    <div class="loginBox"> 
+            <h1>Registro de Servicio</h1>
+            <form   action=""  method="POST">
+                {% csrf_token %} 
+                <div class="input-contenedor">
+                    <i class="fas fa-barcode"></i>
+                    {{form.Codigo}} 
+                    
+                    <i class="fas fa-clipboard-list"></i>
+                    {{form.Nombre}} 
+                </div>
+             
+                <div class="input-contenedor">
+                    <i class="fas fa-boxes"></i>
+                    {{form.Cantidad}}  
+
+                    <i class="fas fa-dollar-sign"></i>
+                    {{form.Valor}}  
+                </div>
+                <button type="submit" id="boton" class="btn">Actualizar</button>
+            </div>
+        </form>
+{% endblock%}
