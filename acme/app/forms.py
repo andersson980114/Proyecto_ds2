@@ -2,7 +2,7 @@ from django import forms
 
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
-from .models import Usuario, Cliente, Mascota, Servicio
+from .models import Usuario, Cliente, Mascota, Servicio, Historia
 
 class UsuarioForm(forms.ModelForm): 
 
@@ -108,3 +108,17 @@ class ServicioForm(forms.ModelForm):
             'Valor': forms.NumberInput( 
                 attrs = {'class': 'form.control', 'placeholder': 'Ingrese el Valor' }) #llave foranea
         }
+
+class HistoriaForm(forms.ModelForm):   
+    class Meta:
+        model = Historia
+                 #Datos con los que se llenara el formulario (atributos de la tabla sin el ID)
+        fields = ['Mascota_id', 'Fecha_creacion']
+        widgets = {
+            'Fecha_creacion': forms.SelectDateWidget( 
+                attrs = {'class': 'form.control', 'placeholder': 'Ingrese la fecha de creación' }),
+           
+            'Mascota_id': forms.Select(
+                attrs = { 'class': 'form.control', 'placeholder': 'Ingrese la mascota' })#llave foranea
+        }
+    

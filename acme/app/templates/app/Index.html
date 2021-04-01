@@ -8,13 +8,19 @@
 
 {% block navbar %}
 	{% if type == 1 %}
-	  <li><a href="{% static 'app/Consulta.html' %}">Registrar consulta</a></li>
-                    <li><a href="{% static 'app/Historial.html' %}">Consultar historial </a></li>
-                    <li> <a href="#">{{user.first_name}} <span class="" ><i class="fas fa-user-md"></i></span></a>
-                        <ul>
-                            <li><a href="{% url 'logout' %}"> Cerrar sesión</a></li>
-                        </ul>
-                    </li>  
+        <li><a href="#">Gestionar historia clínica</a>
+            <ul>
+                <li><a href="RegistrarHistorial">Registrar historia clínica</a></li>
+                <li><a href="ConsultarHistorial">Consultar historia Clínica</a></li>
+            </ul>
+        </li>
+	
+        <li><a href="entrada">Registrar entrada </a></li>
+        <li> <a href="#">{{user.first_name}} <span class="" ><i class="fas fa-user-md"></i></span></a>
+            <ul>
+                <li><a href="{% url 'logout' %}"> Cerrar sesión</a></li>
+            </ul>
+        </li>  
 	{% elif type == 2 %}
 
         <li><a href="RegistroCliente">Registrar Cliente</a></li>

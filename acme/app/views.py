@@ -4,8 +4,8 @@ from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.contrib.auth import authenticate, login
-from .models import Usuario, Cliente, Mascota, Servicio
-from .forms import UsuarioForm, ClienteForm, MascotaForm, ServicioForm
+from .models import Usuario, Cliente, Mascota, Servicio , Historia
+from .forms import UsuarioForm, ClienteForm, MascotaForm, ServicioForm, HistoriaForm
 from django.contrib.auth.models import User 
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
@@ -194,5 +194,41 @@ def EliminarServicio(request, id):
     servicio.delete()
     messages.success(request, "Servicio Eliminado correctamente")
     return redirect(to = "BuscarServicio")
+
+
+@login_required
+def RegistrarHistorial(request):
+    data = {
+        'form' : HistoriaForm()
+    }
+
+    if request.method == 'POST':
+        formulario = HistoriaForm(data = request.POST)
+        if formulario.is_valid():
+            formulario.save() 
+            messages.success(request, "Historia clínica registrada")
+            return redirect(to=RegistrarHistorial)
+        else:
+            messages.success(request, "Ha ocurrido un error. Intentelo de nuevo")
+
+    return render(request, 'app/RegistrarHistorial.html', data)
+
+@login_required
+def ConsultarHistorial(request):
+
+    queryset = request.GET.get("Buscar")
+    historias = Historia.objects.all()
+
+    if queryset:
+        historias = Historia.objects.filter(
+            Q(id = queryset) |
+            Q(Mascota_id = queryset)
+        ).distinct()
+    data = {
+        'historias':historias
+    }
+    return render(request,'app/ConsultarHistorial.html', data) 
+    
+    
 
 

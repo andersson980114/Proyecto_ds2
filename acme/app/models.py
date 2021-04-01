@@ -124,3 +124,19 @@ class Mascota(models.Model):
 
     def _str_(self):
         return self.Nombre
+
+
+class Historia(models.Model):
+    id = models.AutoField(primary_key=True)
+    Fecha_creacion = models.DateField('Fecha de Creación', blank=False, null=False)
+    Mascota_id = models.ForeignKey(Mascota, on_delete = models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Historia'
+        verbose_name_plural= 'Historias'
+        ordering = ['id'] #se ordena según el parametro indicado(ej: nombre, apellido o cedula)
+
+    def _str_(self):
+        return f'{self.id}'
+    
+  

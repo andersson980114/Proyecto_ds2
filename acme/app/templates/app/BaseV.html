@@ -14,13 +14,22 @@
     <nav>
         <div class="logo"><strong><img src="{% static 'app/image/logo-acme.png' %}" alt=""></strong></div>
         <ul class="links">                     
-            <li><a href=" Consulta">Registrar Entrada</a></li>
-                    <li><a href="Historial">Consultar historial </a></li>
-                    <li> <a href="#">{{user.first_name}} <span class="" ><i class="fas fa-user-md"></i></span></a>
-                        <ul>
-                            <li><a href="{% url 'logout' %}"> Cerrar sesión</a></li>
-                        </ul>
-                    </li> 
+            <li><a href="#">Gestionar historia clínica</a>
+                <ul>
+                    <li><a href="RegistrarHistorial">Registrar historia clínica</a></li>
+                    <li><a href="ConsultarHistorial">Consultar historia clínica</a></li>
+                </ul>
+            </li>                 
+
+            <li><a href="Historial">Registrar entrada </a></li>        
+
+            <li> <a href="#">{{user.first_name}} <span class="" ><i class="fas fa-user-md"></i></span></a>
+                <ul>
+                    <li><a href="{% url 'logout' %}"> Cerrar sesión</a></li>
+                </ul>
+            </li>       
+
+                     
         </ul> 
 
     </nav>
