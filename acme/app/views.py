@@ -4,8 +4,8 @@ from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.contrib.auth import authenticate, login
-from .models import Usuario, Cliente, Mascota, Servicio , Historia
-from .forms import UsuarioForm, ClienteForm, MascotaForm, ServicioForm, HistoriaForm
+from .models import Usuario, Cliente, Mascota, Servicio , Historia, EntradaHistoria
+from .forms import UsuarioForm, ClienteForm, MascotaForm, ServicioForm, HistoriaForm, EntradaHistoriaForm
 from django.contrib.auth.models import User 
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
@@ -228,6 +228,23 @@ def ConsultarHistorial(request):
         'historias':historias
     }
     return render(request,'app/ConsultarHistorial.html', data) 
+
+@login_required
+def RegistrarEntrada(request):
+    data = {
+        'form' : EntradaHistoriaForm()
+    }
+
+    if request.method == 'POST':
+        formulario = HistoriaForm(data = request.POST)
+        if formulario.is_valid():
+            formulario.save() 
+            messages.success(request, "Entrada registrada")
+            return redirect(to=RegistrarEntrada)
+        else:
+            messages.success(request, "Ha ocurrido un error. Intentelo de nuevo")
+
+    return render(request, 'app/RegistrarEntrada.html', data)
     
     
 

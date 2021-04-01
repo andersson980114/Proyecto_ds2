@@ -1,0 +1,46 @@
+{% extends 'app/BaseV.html' %}
+
+{% load static %}
+
+{% block cssV %}
+    <link rel="stylesheet" href="{% static 'app/css/RegistrarEntrada.css' %}"> 
+    <link rel="stylesheet" href="{% static 'app/css/BarraA.css' %}"> 
+    <title>SCVA_VETERINARIO</title>
+{% endblock %} 
+
+{% block contenidoV %}
+    <div class="loginBox"> 
+            <h1>Registro de entrada</h1>
+            <form   action=""  method="POST">
+                {% csrf_token %} 
+                <div class="input-contenedor">
+                    <div class="input-contenedor">
+                        <i class="far fa-folder"></i>
+                        {{form.Historia_id}} 
+                        
+                        <i class="fas fa-user-nurse"></i>
+                        {{form.Veterinario}} 
+                    </div>
+
+                    <div class="input-contenedor">
+                        <i class="far fa-calendar-alt"></i>
+                        {{form.Fecha}} 
+
+                    </div>
+
+                    <div class="input-contenedor">
+                        <br><i class="fas fa-clipboard-list"></i>
+                        {{form.Observaciones}} 
+
+                        &nbsp &nbsp &nbsp &nbsp<i class="fas fa-clipboard-list"></i>
+                        {{form.Tipo}}
+                    </div>
+
+                </div>
+             
+                
+                <button type="submit" id="boton" class="btn">Registrar</button>
+            </div>
+        </form>
+{% endblock%}
+ 

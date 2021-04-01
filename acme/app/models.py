@@ -138,5 +138,21 @@ class Historia(models.Model):
 
     def _str_(self):
         return f'{self.id}'
+
+class EntradaHistoria(models.Model):
+    id = models.AutoField(primary_key=True)
+    Historia_id = models.ForeignKey(Historia, on_delete = models.CASCADE)
+    Veterinario = models.CharField('Veterinario',max_length=50, blank=False, null=False)
+    Fecha = models.DateTimeField('Fecha' ,blank=False, null=False)
+    Observaciones = models.CharField('Observaciones',max_length=500, blank=False, null=False)
+    Tipo = models.CharField('Tipo',max_length=50, blank=False, null=False)
+
+    class Meta:
+        verbose_name = 'EntradaHistoria'
+        verbose_name_plural= 'EntradasHistorias'
+        ordering = ['id'] #se ordena según el parametro indicado(ej: nombre, apellido o cedula)
+
+    def _str_(self):
+        return f'{self.id}'
     
   

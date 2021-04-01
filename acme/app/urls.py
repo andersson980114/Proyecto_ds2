@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import Index, RegistroCliente, RegistroUsuario, RegistroMascota, BuscarUsuario, ModificarUsuario, EliminarUsuario, ListarClientes, RegistroServicio, BuscarServicio ,ModificarServicio, EliminarServicio, RegistrarHistorial, ConsultarHistorial
+from .views import Index, RegistroCliente, RegistroUsuario, RegistroMascota, BuscarUsuario, ModificarUsuario, EliminarUsuario, ListarClientes, RegistroServicio, BuscarServicio ,ModificarServicio, EliminarServicio, RegistrarHistorial, ConsultarHistorial, RegistrarEntrada
 #2 se define una url para cada vew(las vews se debesn importar de .vews)
 urlpatterns = [
     path('', Index, name="Index"), 
@@ -16,5 +16,6 @@ urlpatterns = [
     path('EliminarServicio/<id>/', EliminarServicio, name= "EliminarServicio"), 
     path('RegistrarHistorial', RegistrarHistorial, name= "RegistrarHistorial"),
     path('ConsultarHistorial', ConsultarHistorial, name= "ConsultarHistorial"), 
+    path('RegistrarEntrada', RegistrarEntrada, name= "RegistrarEntrada"), 
 
 ]
