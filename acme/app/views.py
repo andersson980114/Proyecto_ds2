@@ -13,6 +13,8 @@ from django.db.models import Q
 # Create your views here.
 #1 crear vews 
 
+
+
 def Index(request):
     if  request.user.is_authenticated:
         usuario = request.user.username
@@ -65,23 +67,27 @@ def ListarClientes(request):
     return render(request, 'app/ListarClientes.html', data)
 
 @login_required
-def RegistroMascota(request):
+def RegistroMascota(request, id): 
+    cliente = Cliente.objects.get(pk=id)
     data = {
-        'form' : MascotaForm()
+        'form' : MascotaForm(),
+        'cliente':cliente
     }
-
     if request.method == 'POST':
-        formulario = MascotaForm(data = request.POST)
-        if formulario.is_valid():
-            formulario.save() 
-            messages.success(request, "Mascota registrada")
+        try:
+            nombre = request.POST['nombre']
+            especie = request.POST['especie']
+            raza = request.POST['raza']
+            fecha = request.POST['fecha']
+            sexo = int(request.POST['sexo'])
+            mascota = Mascota.objects.get_or_create(Nombre=nombre,Especie=especie,Raza=raza,Fecha_nacimiento=fecha,Sexo=sexo,Cliente_id=cliente)
+            
             return redirect(to=RegistroMascota)
-        else:
+        except :
             messages.success(request, "Ha ocurrido un error. Intentelo de nuevo")
 
     return render(request, 'app/RegistroMascota.html', data)
 
- 
 @login_required
 def RegistroUsuario(request):
     form_class = UsuarioForm()
@@ -200,7 +206,7 @@ def EliminarServicio(request, id):
 def RegistrarHistorial(request):
     data = {
         'form' : HistoriaForm()
-    }
+    } 
 
     if request.method == 'POST':
         formulario = HistoriaForm(data = request.POST)
@@ -215,10 +221,9 @@ def RegistrarHistorial(request):
 
 @login_required
 def ConsultarHistorial(request):
-
     queryset = request.GET.get("Buscar")
     historias = Historia.objects.all()
-
+     
     if queryset:
         historias = Historia.objects.filter(
             Q(id = queryset) |
@@ -228,6 +233,7 @@ def ConsultarHistorial(request):
         'historias':historias
     }
     return render(request,'app/ConsultarHistorial.html', data) 
+
 
 @login_required
 def RegistrarEntrada(request):

@@ -1,5 +1,6 @@
 from django import forms
 
+from django.contrib.admin.widgets import AutocompleteSelect, AdminDateWidget
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
 from .models import Usuario, Cliente, Mascota, Servicio, Historia, EntradaHistoria
@@ -73,26 +74,15 @@ class ClienteForm(forms.ModelForm):
 
 
 
-class MascotaForm(forms.ModelForm):   
-    class Meta:
-        model = Mascota
-                 #Datos con los que se llenara el formulario (atributos de la tabla sin el ID)
-        fields = ['Nombre', 'Especie', 'Raza', 'Fecha_nacimiento',  'Sexo', 'Cliente_id']
-        widgets = {
-            'Nombre': forms.TextInput(
-                attrs = {'class': 'form.control', 'placeholder': 'Ingrese el Nombre de la Mascota' }),
-            'Especie': forms.TextInput(
-                attrs = {  'class': 'form.control', 'placeholder': 'Ingrese la Especie ' }),
-            'Raza': forms.TextInput(
-                attrs = { 'class': 'form.control',  'placeholder': 'Ingrese la Raza' }),
-            'Fecha_nacimiento': forms.SelectDateWidget( 
-                attrs = {'class': 'form.control', 'placeholder': 'Ingrese la Fecha de Nacimiento' }),
-            'Sexo': forms.Select( 
-                attrs = { 'class': 'form.control','placeholder': 'Ingrese el Sexo'  }), 
-            'Cliente_id': forms.Select(
-                attrs = { 'class': 'form.control', 'placeholder': 'Ingrese Dueño'  })#llave foranea
-        }
+class MascotaForm(forms.Form):   
+    nombre = forms.CharField(max_length=20,label='Nombre de la mascota')
+    especie = forms.CharField(max_length=20,label='Especie')
+    raza = forms.CharField(max_length=20,label='Raza') 
+    fecha = forms.DateField(widget=AdminDateWidget())
+    sexo = forms.ChoiceField(choices=[(1,'Macho'),(2,'Hembra')])
     
+
+
 class ServicioForm(forms.ModelForm):   
     class Meta:
         model = Servicio

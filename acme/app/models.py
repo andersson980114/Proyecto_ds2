@@ -62,7 +62,7 @@ class Usuario(AbstractBaseUser):
         ordering = ['Nombres'] #se ordena según el parametro indicado(ej: nombre, apellido o cedula)
 
     
-    def _str_(self):
+    def __str__(self):
         return f'{self.Nombres},{self.Apellidos}'
 
     def has_perm(self, perm, obj = None):
@@ -87,7 +87,7 @@ class Servicio(models.Model):
         verbose_name_plural= 'Servicios'
         ordering = ['Codigo'] #se ordena según el parametro indicado(ej: nombre, apellido o cedula)
 
-    def _str_(self):
+    def __str__(self):
         return f'{self.Codigo},{self.Nombre}'
     
     
@@ -106,7 +106,7 @@ class Cliente(models.Model):
         ordering = ['Nombre'] #se ordena según el parametro indicado(ej: nombre, apellido o cedula)
 
     def __str__(self):
-        return f'{self.Cedula}: {self.Nombre}'
+        return f'{self.Cedula}: {self.Apellido} {self.Nombre} '
 
 class Mascota(models.Model):
     id = models.AutoField(primary_key=True)
@@ -116,28 +116,28 @@ class Mascota(models.Model):
     Fecha_nacimiento = models.DateField('Fecha de Nacimiento', blank=False, null=False)
     Sexo = models.IntegerField('Sexo', choices = opciones_Sexo)  
     Cliente_id = models.ForeignKey(Cliente, on_delete = models.CASCADE)
-      
     class Meta:
         verbose_name = 'Mascota'
         verbose_name_plural= 'Mascotas'
         ordering = ['Nombre'] #se ordena según el parametro indicado(ej: nombre, apellido o cedula)
 
-    def _str_(self):
-        return self.Nombre
+    def __str__(self):
+        return f'{self.Cliente_id}: {self.Nombre}'
 
 
 class Historia(models.Model):
     id = models.AutoField(primary_key=True)
-    Fecha_creacion = models.DateField('Fecha de Creación', blank=False, null=False)
-    Mascota_id = models.ForeignKey(Mascota, on_delete = models.CASCADE)
+    Fecha_creacion = models.DateField('Fecha de Creación', blank=False, null=False) 
+    Mascota_id = models.ForeignKey(Mascota, on_delete = models.CASCADE) 
 
     class Meta:
         verbose_name = 'Historia'
         verbose_name_plural= 'Historias'
         ordering = ['id'] #se ordena según el parametro indicado(ej: nombre, apellido o cedula)
 
-    def _str_(self):
-        return f'{self.id}'
+    def __str__(self):
+        return f'{self.Mascota_id}'
+
 
 class EntradaHistoria(models.Model):
     id = models.AutoField(primary_key=True)
@@ -152,7 +152,7 @@ class EntradaHistoria(models.Model):
         verbose_name_plural= 'EntradasHistorias'
         ordering = ['id'] #se ordena según el parametro indicado(ej: nombre, apellido o cedula)
 
-    def _str_(self):
-        return f'{self.id}'
+    def __str__(self):
+        return self.id
     
   

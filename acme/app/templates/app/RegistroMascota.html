@@ -4,8 +4,22 @@
 
 
 {% block cssR %} 
+        
+    <link rel="stylesheet" href="{% static 'admin/css/vendor/select2/select2.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/css/autocomplete.css' %}">
+    <!--Buscador-->
+    <link rel="stylesheet" href="{% static 'admin/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/css/widgets.css' %}">
+
+    <script src="{% url 'js-catlog' %}"></script>
+    <script src="{% static 'admin/js/core.js' %}"></script>
+    <script src="/static/admin/js/admin/DateTimeShortcuts.js"></script>
+    <script src="/admin/jsi18n/"></script>
+    <script src="/static/admin/js/calendar.js"></script>  
+
     <link rel="stylesheet" href="{% static 'app/css/RegistroUsuario.css' %}"> 
     <link rel="stylesheet" href="{% static 'app/css/BarraR.css' %}"> 
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css">
     <title>SCVA_RegistroPaciente</title>
     
 {% endblock%}
@@ -15,35 +29,45 @@
             <h1>Registro del Paciente</h1>
         <form   action=""  method="POST">
             
-            {% csrf_token %} 
+            {% csrf_token %}
             <div class="contenedor">
-                <div class="input-contenedor">
-                    <i class="far fa-address-card"></i>
-                    Cliente: {{form.Cliente_id}}
-                  
-                    <i class="far fa-edit"></i>
-                    {{form.Nombre}}
-                </div> 
+                <div class="input-contenedor"  >
+                    <i class="far fa-edit"></i> 
+                    Cliente: {{cliente.Cedula}}  
+                </div>
 
+                <div class="input-contenedor" >
+                    <i class="far fa-edit"></i>
+                    Nombre mascota: {{form.nombre}} 
+                </div>
+                     
                 <div class="input-contenedor">
                     <i class="fas fa-paw"></i>
-                   {{form.Especie}}
-                
+                    Especie: {{form.especie}}
+                 
                     <i class="fas fa-paw"></i> 
-                    {{form.Raza}}
-                </div> 
-
+                    Raza: {{form.raza}} 
+                </div>
+                     
                 <div class="input-contenedor">
                     <i class="fas fa-transgender"></i>
-                  Sexo: {{form.Sexo}}
-                </div>
-                <div class="input-contenedor"></div>
-                    {{form.Fecha_nacimiento}}
-                </div>
+                    Sexo: {{form.sexo}}
+                
+                    Fecha de nacimiento: {{form.fecha}}
+                </div> 
              
-            <button type="submit" id="boton" class="btn">Registrar Mascota</button>
+            <button type="submit" id="boton" class="btn">Registrar</button>
             
         </form>
     </div>
 
 {% endblock%}
+
+{% block js %}
+    <script src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+    <script src="{% static 'admin/js/vendor/select2/select2.full.js' %}"></script>
+    <script src="{% static 'admin/js/jquery.init.js' %}"></script>
+    <script src="{% static 'admin/js/autocomplete.js' %}"></script>
+      
+    
+{% endblock %}

@@ -14,12 +14,12 @@
         <form   action=""  method="POST">
             {% csrf_token %}  
             <div class="contenedor">
-                <div class="input-contenedor">
+                <div class="input-contenedor"> 
                     <i class="far fa-address-card"></i>
-                    {{form.Cedula}}
+                        {{form.Cedula}}
                 
                     <i class="fas fa-user-edit"></i>
-                    {{form.Nombre}}
+                    {{form.Nombre}} 
                 </div>
              
                 <div class="input-contenedor">
@@ -38,7 +38,7 @@
                     {{form.Correo}}
                 </div>
             
-            <button type="submit" id="boton" class="btn">Registrar y añadir mascota</button>
+            <button type="submit" id="boton" class="btn">Registrar</button>
             
         </form>
     </div>
