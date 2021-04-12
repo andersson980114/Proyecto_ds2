@@ -2,7 +2,8 @@
 {% load static %}
 
 {% block css %} 
-    <link rel="stylesheet" href="{% static 'app/css/BarraA.css' %}"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'app/css/Index.css' %}"> 
     <title>SCVA_INICIO</title>
 {% endblock %} 
 
@@ -60,6 +61,16 @@
         {% endif %} 
 
 {%endblock%}
-{% block contenido %}
 
+{% block contenido %}
+<div class="slider">
+    <ul> 
+        <li><img src="{% static 'app/image/vaca.jpg' %}"alt=""></li>
+        <li><img src="{% static 'app/image/gato.jpg' %}"alt=""></li>
+        <li><img src="{% static 'app/image/perro.jpg' %}"alt=""></li>
+        <li><img src="{% static 'app/image/caballo.jpg' %}"alt=""></li>
+        
+    </ul>
+</div>
 {% endblock %}
+
