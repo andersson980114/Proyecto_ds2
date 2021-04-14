@@ -1,0 +1,37 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: url(image/fondo4.png) no-repeat center top;
+    background-size: cover ;
+    font-family: sans-serif;
+    height: 100vh;
+}
+
+.loginBox{
+    padding: 0;
+    margin-top: 230px;
+    margin-bottom: 150px; 
+    width: 1000px;
+    height: 650px;
+    background: #000000;
+    opacity: 80%;
+    color: #fff;
+    top: 25%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;  
+    border-radius: 7px;
+    
+}
+ 
+.loginBox h1{
+    margin: 0;
+    padding: 0 0 40px;
+    text-align: center;
+    font-family: sans-serif;
+    color: #FFF;
+    text-shadow: black 0.1em 0.1em ;
+    font-size: 30px;
+}
+ 

@@ -1,0 +1,65 @@
+{% extends 'app/BaseA.html' %}
+
+{% load static %}
+
+{% block cssA %}
+
+    <link rel="stylesheet" href="{% static 'app/css/RegistroUsuario.css' %}"> 
+    <link rel="stylesheet" href="{% static 'app/css/BarraA.css' %}"> 
+    <title>SCVA_ADMINISTRADOR</title>
+{% endblock %} 
+ 
+{% block contenidoA %}
+    <div class="loginBox">
+        <h1>Registro de Usuario</h1> 
+        <form action=""  method="POST">
+            
+            {% csrf_token %} 
+            <div class="contenedor">
+                <div class="input-contenedor">
+                    <i class="far fa-address-card"></i>
+                    {{ form.username }}  
+                
+                    <i class="fas fa-user-edit"></i>
+                    {{form.Nombres}} 
+                </div> 
+                <br>
+                <div class="input-contenedor">
+                    <i class="fas fa-user-edit"></i>
+                    {{form.Apellidos}}
+                 
+                    <i class="fas fa-phone-volume"></i>
+                    {{form.Telefono}} 
+                </div>
+                <br>
+                <div class="input-contenedor">
+                    <i class="fas fa-home"></i>
+                    {{form.Direccion}} 
+                 
+                    <i class="fas fa-at"></i>
+                    {{form.email}} 
+                </div>
+                <br>
+                <div class="input-contenedor">
+                    <i class="far fa-user-circle"></i> 
+                    Cargo:   {{form.Cargo}} 
+                    <i class="fas fa-unlock-alt"></i>
+                    {{form.password}}  
+                </div> 
+            </div>
+            
+            
+            <button type="submit" id="boton" class="btn">REGISTRAR</button>
+
+        </form>    
+    </div>
+{% endblock %}
+
+ 
+    
+        
+
+        
+    
+
+         

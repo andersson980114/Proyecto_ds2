@@ -1,0 +1,57 @@
+{% load static %}  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/ab566bad4a.js" crossorigin="anonymous"></script>  
+    <link rel="stylesheet" href="{% static 'app/css/footer.css' %}"> 
+    {% block cssA %}
+
+    {% endblock %} 
+</head>
+<body> 
+    <nav>
+        <div class="logo"><strong><img src="{% static 'app/image/logo-acme.png' %}" alt=""></strong></div>
+        <ul class="links">
+            <li><a href="{% url 'Index' %}">Gestionar Usuarios</a>
+                <ul>
+                    <li><a href="RegistroUsuario">Registrar Usuario</a></li>
+                    <li><a href="BuscarUsuario">Buscar Usuario</a></li>
+                </ul>
+            </li>
+
+            <li><a href="{% url 'Index' %}">Gestionar Servicio</a>
+                <ul>
+                    <li><a href="RegistroServicio">Registrar Servicio</a></li>
+                    <li><a href="BuscarServicio">Buscar Servicio</a></li>
+                </ul>
+            </li>
+
+            <li><a href="{% url 'Index' %}">Generar Reporte</a> </li>
+
+            <li> <a href="{% url 'Index' %}">{{user.username}} <span class="" ><i class="fas fa-user-tie"></i></span></a>
+                
+                <ul>
+                <li><a href="{% url 'logout' %}"> Cerrar sesión</a></li>
+                </ul>
+            </li> 
+              
+        </ul> 
+        </div>
+
+    </nav>
+    
+    <div class="contenido">
+        <!--Base para agregar contenido-->
+        {% block contenidoA %}
+       
+        {% endblock %}
+
+    </div>
+    <br>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</html>

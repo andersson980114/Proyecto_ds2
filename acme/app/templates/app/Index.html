@@ -1,12 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SCVA</title>
-</head>
-<body>
-    <h1>Bienvenido</h1>
-</body>
-</html>
+{% extends 'app/Base.html' %}
+{% load static %}
+
+{% block css %} 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'app/css/Index.css' %}"> 
+    <title>SCVA_INICIO</title>
+{% endblock %} 
+
+{% block navbar %}
+	{% if type == 1 %}
+        <li><a href="#">Gestionar historia clínica</a>
+            <ul>
+                <li><a href="RegistrarHistorial">Crear historia clínica</a></li>
+                <li><a href="ConsultarHistorial">Consultar historia Clínica</a></li>
+            </ul>
+        </li>
+	
+        <li><a href="RegistrarEntrada">Registrar entrada </a></li>
+        <li> <a href="#">{{user.first_name}} <span class="" ><i class="fas fa-user-md"></i></span></a>
+            <ul>
+                <li><a href="{% url 'logout' %}"> Cerrar sesión</a></li>
+            </ul>
+        </li>  
+	{% elif type == 2 %}
+
+        <li><a href="RegistroCliente">Registrar Cliente</a></li>
+        <li><a href="ListarClientes">Registrar Mascota</a></li>
+        <li><a href="Facturar">Facturar</a></li>
+        <li> <a href="#">{{user.first_name}}<span class="" ><i class="fas fa-chalkboard-teacher"></i></span></a>
+            <ul>
+                <li><a href="{% url 'logout' %}"> Cerrar sesión</a></li>
+            </ul>
+        </li>  
+	  {% elif type == None %}
+                <li><a href="{% url 'logout' %}">INICIAR SESION</a>
+	  {% else %}
+	  <li><a href="#">Gestionar Usuarios</a>
+                        <ul>
+                            <li><a href="RegistroUsuario">Registrar Usuario</a></li>
+                            <li><a href="BuscarUsuario">Buscar Usuario</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#">Gestionar Servicios</a>
+                        <ul>
+                            <li><a href="RegistroServicio">Registrar Servicio</a></li>
+                            <li><a href="BuscarServicio">Buscar Servicio</a></li>
+                        </ul>
+                    </li> 
+
+                    <li><a href="{% static 'app/GenerarReporte.html' %}">Generar Reporte</a> </li>
+
+                    <li> <a href="#">{{user.username}} <span class="" ><i class="fas fa-user-tie"></i></span></a>
+                        
+                        <ul>
+                        <li><a href="{% url 'logout' %}"> Cerrar sesión</a></li>
+                        </ul>
+                    </li> 
+                
+        {% endif %} 
+
+{%endblock%}
+
+{% block contenido %}
+<div class="slider">
+    <ul> 
+        <li><img src="{% static 'app/image/vaca.jpg' %}"alt=""></li>
+        <li><img src="{% static 'app/image/gato.jpg' %}"alt=""></li>
+        <li><img src="{% static 'app/image/perro.jpg' %}"alt=""></li>
+        <li><img src="{% static 'app/image/caballo.jpg' %}"alt=""></li>
+        
+    </ul>
+</div>
+{% endblock %}
+

@@ -1,7 +1,7 @@
 body{
     margin: 0;
-    padding: 0;
-    background: url(image/fondo2.jpg) no-repeat center top;
+    padding: 0; 
+    background: url(../image/fondo4.png) no-repeat center;
     background-size: cover ;
     font-family: sans-serif;
     height: 100vh;
@@ -18,7 +18,7 @@ img{
     margin-top: 240px;
     margin-bottom: 150px;
     width: 700px;
-    height: 450px;
+    height: 480px;
     background: #000000;
     opacity: 80%;
     color: #fff;
@@ -38,7 +38,7 @@ img{
     font-family: sans-serif;
     color: #FFF;
     text-shadow: black 0.1em 0.1em ;
-    font-size: 35px;
+    font-size: 40px;
 }
 
 .loginBox label{
@@ -51,13 +51,12 @@ img{
 }
 
 .loginBox input{
-    width: 40%;
+    width: 40%; 
     margin-bottom: 30px;
 }
 
-
-.loginBox select{
-    width: 40%;
+.loginBox Select{
+    width: 30%;
     margin: 0  5% 0 0 ;
     border: none;
     border-bottom: 1px solid #fff;
@@ -68,6 +67,12 @@ img{
     font-size: 15px;   
 }
 
+<<<<<<< HEAD
+.loginBox input[type="email"],
+.loginBox input[type="text"],
+.loginBox input[type="number"],
+.loginBox input[type="password"]{ 
+=======
 .loginBox input[type="date"]{  
     margin: 10px  5% 0 0 ;
     border: none;
@@ -78,11 +83,9 @@ img{
     color: #fff;
     font-size: 15px;   
 } 
-
-.loginBox input[type="email"],
-.loginBox input[type="text"],
-.loginBox input[type="number"],
-.loginBox input[type="password"]{ 
+ 
+.loginBox input[type="text"] {   
+>>>>>>> f6165acb6fcb9aa3836da787fe1db54b30dbd95c
     margin: 0  5% 0 0 ;
     border: none;
     border-bottom: 1px solid #fff;
@@ -91,8 +94,8 @@ img{
     height: 40px;
     color: #fff;
     font-size: 15px;   
-    margin-top: 2%;
 }
+
 
 .btn{  
     margin-top: 12%;
@@ -102,23 +105,19 @@ img{
     text-decoration: none;
     background: #f50505; 
     color: #fff;
-    font-size: 22px;
+    font-size: 25px;
     text-shadow: black 0.1em 0.1em;
     border-radius: 7px;
     transform: translate(-50%, -50%);
 }
-
+<<<<<<< HEAD
+ 
+ 
 form span a{ 
     padding: 0;
+=======
+
+form span a{
+>>>>>>> f6165acb6fcb9aa3836da787fe1db54b30dbd95c
     color: white;
-}
-
-.casilla{
-    padding: 0;
-    margin: 0;
-}
-
-.loginBox input[type="checkbox"]{
-    padding: 0;
-    margin: 0;
 }
