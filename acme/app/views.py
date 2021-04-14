@@ -13,6 +13,8 @@ from django.db.models import Q
 # Create your views here.
 #1 crear vews 
 
+
+
 def Index(request):
     if  request.user.is_authenticated:
         usuario = request.user.username
@@ -65,23 +67,27 @@ def ListarClientes(request):
     return render(request, 'app/ListarClientes.html', data)
 
 @login_required
-def RegistroMascota(request):
+def RegistroMascota(request, id): 
+    cliente = Cliente.objects.get(pk=id)
     data = {
-        'form' : MascotaForm()
+        'form' : MascotaForm(),
+        'cliente':cliente
     }
-
     if request.method == 'POST':
-        formulario = MascotaForm(data = request.POST)
-        if formulario.is_valid():
-            formulario.save() 
-            messages.success(request, "Mascota registrada")
+        try:
+            nombre = request.POST['nombre']
+            especie = request.POST['especie']
+            raza = request.POST['raza']
+            fecha = request.POST['fecha']
+            sexo = int(request.POST['sexo'])
+            mascota = Mascota.objects.get_or_create(Nombre=nombre,Especie=especie,Raza=raza,Fecha_nacimiento=fecha,Sexo=sexo,Cliente_id=cliente)
+            
             return redirect(to=RegistroMascota)
-        else:
+        except :
             messages.success(request, "Ha ocurrido un error. Intentelo de nuevo")
 
     return render(request, 'app/RegistroMascota.html', data)
 
- 
 @login_required
 def RegistroUsuario(request):
     form_class = UsuarioForm()
@@ -200,7 +206,7 @@ def EliminarServicio(request, id):
 def RegistrarHistorial(request):
     data = {
         'form' : HistoriaForm()
-    }
+    } 
 
     if request.method == 'POST':
         formulario = HistoriaForm(data = request.POST)
@@ -215,28 +221,41 @@ def RegistrarHistorial(request):
 
 @login_required
 def ConsultarHistorial(request):
-
     queryset = request.GET.get("Buscar")
-    historias = Historia.objects.all()
-
+    historias = Historia.objects.all() 
+    #cliente = Historia.objects.all().filter( type= Cliente.objects.get(Cedula=queryset))
     if queryset:
         historias = Historia.objects.filter(
-            Q(id = queryset) |
-            Q(Mascota_id = queryset)
+            Q(Mascota_id__Cliente_id__Cedula = queryset)|
+            Q(Mascota_id__Cliente_id__Nombre = queryset)|
+            Q(Mascota_id__Cliente_id__Apellido = queryset)|
+            Q(Mascota_id__Nombre = queryset)
         ).distinct()
     data = {
         'historias':historias
     }
     return render(request,'app/ConsultarHistorial.html', data) 
 
+#@login_required
+def VerHistorial(request, id):
+
+    entradas = EntradaHistoria.objects.filter( Historia_id = id )
+
+    data = {
+        'entradas': entradas
+    }
+    return render(request,'app/VerHistorial.html', data) 
+
+
+
 @login_required
-def RegistrarEntrada(request):
+def RegistrarEntrada(request): 
     data = {
         'form' : EntradaHistoriaForm()
-    }
+    } 
 
     if request.method == 'POST':
-        formulario = HistoriaForm(data = request.POST)
+        formulario = EntradaHistoriaForm(data = request.POST)
         if formulario.is_valid():
             formulario.save() 
             messages.success(request, "Entrada registrada")
@@ -245,7 +264,20 @@ def RegistrarEntrada(request):
             messages.success(request, "Ha ocurrido un error. Intentelo de nuevo")
 
     return render(request, 'app/RegistrarEntrada.html', data)
-    
+
+@login_required
+def Detalles(request, id): 
+    entrada = get_object_or_404(EntradaHistoria, id = id)
+    data = {
+        'form' : EntradaHistoriaForm(instance = entrada )
+    } 
+
+    if request.method == 'POST':
+        formulario = EntradaHistoriaForm(data = request.POST, isinstance =  entrada, files = request.FILES)
+        data['form']= formulario
+
+    return render(request, 'app/Detalles.html', data)
+
     
 
 

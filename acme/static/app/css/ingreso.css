@@ -1,0 +1,84 @@
+/*cuerpo*/ 
+body{
+    margin: 0;
+    padding: 0; 
+    background: url(../image/FondoInicio.jpg) no-repeat center top; 
+    background-size: cover ;
+    font-family: sans-serif;
+    height: 100vh;
+} 
+
+img{
+    padding:1% 1%;
+    margin-left: 2%;
+    width: 95%;
+    height: 20%;
+}
+
+/*caja central*/
+.loginBox{
+    padding:0;
+    width: 400px;
+    height: 600px;
+    background: #202425;
+    opacity: 90%;
+    color: #fff;
+    top: 50%;
+    left: 75%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    border-radius: 7px;
+}
+
+/*los h1 que están en la caja*/
+.loginBox h1{
+    margin: 0;
+    padding: 0 0 40px;
+    text-align: center;
+    font-family: sans-serif;
+    color: #FFF;
+    text-shadow: black 0.1em 0.1em ;
+    font-size: 25px;
+}
+
+/*los label que están en la caja*/
+.loginBox label{
+    margin: 0;
+    padding: 1% 8%;
+    font-weight: bold;
+    text-shadow: black 0.1em 0.1em;
+    display: block;
+    font-size: 25px; 
+}
+
+/*los input que están en la caja*/
+.loginBox input{ 
+    width: 80%;
+    margin-bottom: 10%;
+}
+ 
+.loginBox input[type="text"],
+.loginBox input[type="password"]{
+    margin-left: 8%;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 20px;   
+}
+
+/*los boton que están en la caja*/
+.btn{   
+    display: inline-block;
+    padding: 5% 24%;
+    margin: 1% 7%;
+    text-decoration: none;
+    background: #f50505; 
+    color: #fff;
+    font-size: 25px;
+    text-shadow: black 0.1em 0.1em;
+    border-radius: 7px;
+}
