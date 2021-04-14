@@ -36,18 +36,16 @@
                 <table class = "table table-striped table-hover ">
                     <thead>
                         <tr>
-                            <th>Código</th>
-                            <th>Fecha creación</th>
-                            <th>Mascota</th>
+                            <th>Historias</th>
+                            <th>Opción</th> 
                             
                         </tr>
                     </thead>
                     <tbody>
                         {% for Historia in historias %}
                             <tr>
-                                <td>{{Historia.id}}</td>
-                                <td>{{Historia.Fecha_creacion}}</td>
-                                <td>{{Historia.Mascota_id}}</td>                                                               
+                                <td>{{Historia.Mascota_id}}</td>   
+                                <td> <a href="{% url 'VerHistorial' Historia.id %}" class="btn btn-primary">Ver Historial</a></td>                                 
                             </tr> 
                         {% endfor%}
                     </tbody>

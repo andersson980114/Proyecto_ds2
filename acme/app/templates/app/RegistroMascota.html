@@ -3,9 +3,9 @@
 {% load static %}
 
 
-{% block cssR %} 
+{% block cssR %}  
     <link rel="stylesheet" href="{% static 'app/css/RegistroUsuario.css' %}"> 
-    <link rel="stylesheet" href="{% static 'app/css/BarraR.css' %}"> 
+    <link rel="stylesheet" href="{% static 'app/css/BarraR.css' %}">  
     <title>SCVA_RegistroPaciente</title>
     
 {% endblock%}
@@ -15,35 +15,46 @@
             <h1>Registro del Paciente</h1>
         <form   action=""  method="POST">
             
-            {% csrf_token %} 
+            {% csrf_token %}
             <div class="contenedor">
-                <div class="input-contenedor">
-                    <i class="far fa-address-card"></i>
-                    Cliente: {{form.Cliente_id}}
-                  
+                <div class="input-contenedor"  >
+                    <i class="far fa-edit"></i> 
+                    Cliente: {{cliente.Cedula}}  
+                </div>
+
+                <div class="input-contenedor" >
                     <i class="far fa-edit"></i>
-                    {{form.Nombre}}
-                </div> 
-
+                     {{form.nombre}} 
+                    
+                     <i class="fas fa-paw"></i>
+                    {{form.especie}}
+                </div>
+                     
                 <div class="input-contenedor">
-                    <i class="fas fa-paw"></i>
-                   {{form.Especie}}
-                
                     <i class="fas fa-paw"></i> 
-                    {{form.Raza}}
-                </div> 
+                    {{form.raza}} 
 
-                <div class="input-contenedor">
                     <i class="fas fa-transgender"></i>
-                  Sexo: {{form.Sexo}}
+                    Sexo: {{form.sexo}}
                 </div>
-                <div class="input-contenedor"></div>
-                    {{form.Fecha_nacimiento}}
-                </div>
+                     
+                <div class="input-contenedor">
+                    
+                        Fecha de nacimiento: {{form.fecha}}
+                </div> 
              
-            <button type="submit" id="boton" class="btn">Registrar Mascota</button>
+            <button type="submit" id="boton" class="btn">Registrar</button>
             
         </form>
     </div>
 
 {% endblock%}
+
+{% block js %}
+    <script src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+    <script src="{% static 'admin/js/vendor/select2/select2.full.js' %}"></script>
+    <script src="{% static 'admin/js/jquery.init.js' %}"></script>
+    <script src="{% static 'admin/js/autocomplete.js' %}"></script>
+      
+    
+{% endblock %}

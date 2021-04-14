@@ -1,5 +1,7 @@
-from django import forms
 
+from django.contrib.admin.widgets import AutocompleteSelect, AdminDateWidget
+from django.contrib import admin
+from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
 from .models import Usuario, Cliente, Mascota, Servicio, Historia, EntradaHistoria
@@ -73,26 +75,14 @@ class ClienteForm(forms.ModelForm):
 
 
 
-class MascotaForm(forms.ModelForm):   
-    class Meta:
-        model = Mascota
-                 #Datos con los que se llenara el formulario (atributos de la tabla sin el ID)
-        fields = ['Nombre', 'Especie', 'Raza', 'Fecha_nacimiento',  'Sexo', 'Cliente_id']
-        widgets = {
-            'Nombre': forms.TextInput(
-                attrs = {'class': 'form.control', 'placeholder': 'Ingrese el Nombre de la Mascota' }),
-            'Especie': forms.TextInput(
-                attrs = {  'class': 'form.control', 'placeholder': 'Ingrese la Especie ' }),
-            'Raza': forms.TextInput(
-                attrs = { 'class': 'form.control',  'placeholder': 'Ingrese la Raza' }),
-            'Fecha_nacimiento': forms.SelectDateWidget( 
-                attrs = {'class': 'form.control', 'placeholder': 'Ingrese la Fecha de Nacimiento' }),
-            'Sexo': forms.Select( 
-                attrs = { 'class': 'form.control','placeholder': 'Ingrese el Sexo'  }), 
-            'Cliente_id': forms.Select(
-                attrs = { 'class': 'form.control', 'placeholder': 'Ingrese Dueño'  })#llave foranea
-        }
-    
+class MascotaForm(forms.Form):   
+    nombre = forms.CharField(widget=forms.TextInput(attrs={'class': 'form.control','placeholder':'Nombre de la Mascota'}))
+    especie = forms.CharField(widget=forms.TextInput(attrs={'class': 'form.control','placeholder':'Especie'}))
+    raza = forms.CharField(widget=forms.TextInput(attrs={'class': 'form.control','placeholder':'Raza'}))
+    fecha = forms.DateField(widget=forms.DateInput(attrs={'class': 'form.control','placeholder':'AAAA-MM-DD'}))
+    sexo = forms.ChoiceField(choices=[(1,'Macho'),(2,'Hembra')])
+
+
 class ServicioForm(forms.ModelForm):   
     class Meta:
         model = Servicio
@@ -115,8 +105,7 @@ class HistoriaForm(forms.ModelForm):
                  #Datos con los que se llenara el formulario (atributos de la tabla sin el ID)
         fields = ['Mascota_id', 'Fecha_creacion']
         widgets = {
-            'Fecha_creacion': forms.SelectDateWidget( 
-                attrs = {'class': 'form.control', 'placeholder': 'Ingrese la fecha de creación' }),
+            'Fecha_creacion': forms.DateInput(attrs={'class': 'form.control', 'placeholder':'AAAA-MM-DD'}), 
            
             'Mascota_id': forms.Select(
                 attrs = { 'class': 'form.control', 'placeholder': 'Ingrese la mascota' })#llave foranea
@@ -126,22 +115,22 @@ class EntradaHistoriaForm(forms.ModelForm):
     class Meta:
         model = EntradaHistoria
                  #Datos con los que se llenara el formulario (atributos de la tabla sin el ID)
-        fields = ['Historia_id', 'Veterinario', 'Fecha', 'Observaciones', 'Tipo']
+        fields = ['Historia_id', 'Veterinario', 'Fecha', 'Tipo', 'Observaciones']
         widgets = {
 
-            'Historia_id': forms.Select(
+            'Historia_id': AutocompleteSelect(EntradaHistoria._meta.get_field('Historia_id').remote_field,
+                admin.site,
                 attrs = { 'class': 'form.control', 'placeholder': 'Ingrese la historia clínica' }),#llave foranea
            
             'Veterinario': forms.TextInput(
                 attrs = {  'class': 'form.control', 'placeholder': 'Ingrese el veterinario' }),           
 
-            'Fecha': forms.SelectDateWidget( 
-                attrs = {'class': 'form.control', 'placeholder': 'Ingrese la fecha de entrada' }),
-        
-            'Observaciones': forms.TextInput(
-                attrs = {  'class': 'form.control', 'placeholder': 'Ingrese las observaciones' }),
-            
+            'Fecha': forms.DateInput(attrs={'class': 'form.control', 'placeholder':'AAAA-MM-DD'}), 
+
             'Tipo': forms.TextInput(
-                attrs = {  'class': 'form.control', 'placeholder': 'Ingrese el tipo de la entrada' })
+                attrs = {  'class': 'form.control', 'placeholder': 'Ingrese el tipo de la entrada' }),
+            
+            'Observaciones': forms.Textarea(
+                attrs = {  "rows":10, "cols":80, 'placeholder': 'Ingrese las observaciones' })
         }
     
