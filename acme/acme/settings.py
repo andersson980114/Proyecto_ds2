@@ -30,7 +30,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 #MESSAGE_STORAGE = "django.contrib.messages.storage.CookieStorage"
-LOGIN_REDIRECT_URL = 'Index'
+LOGIN_REDIRECT_URL = 'app:Index'
 LOGOUT_REDIRECT_URL = '/accounts/login'
 
 # Application definition

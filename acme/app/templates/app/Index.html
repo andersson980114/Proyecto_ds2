@@ -9,14 +9,14 @@
 
 {% block navbar %}
 	{% if type == 1 %}
-        <li><a href="#">Gestionar historia clínica</a>
+	<li><a href="{%url 'app:Index'%}">Gestionar historia clínica</a>
             <ul>
-                <li><a href="RegistrarHistorial">Crear historia clínica</a></li>
-                <li><a href="ConsultarHistorial">Consultar historia Clínica</a></li>
+	      <li><a href="{%url 'app:RegistrarHistorial'%}">Crear historia clínica</a></li>
+		<li><a href="{%url 'app:ConsultarHistorial'%}">Consultar historia Clínica</a></li>
             </ul>
         </li>
 	
-        <li><a href="RegistrarEntrada">Registrar entrada </a></li>
+	<li><a href="{%url 'app:RegistrarEntrada'%}">Registrar entrada </a></li>
         <li> <a href="#">{{user.first_name}} <span class="" ><i class="fas fa-user-md"></i></span></a>
             <ul>
                 <li><a href="{% url 'logout' %}"> Cerrar sesión</a></li>
@@ -24,9 +24,9 @@
         </li>  
 	{% elif type == 2 %}
 
-        <li><a href="RegistroCliente">Registrar Cliente</a></li>
-        <li><a href="ListarClientes">Registrar Mascota</a></li>
-        <li><a href="Facturar">Facturar</a></li>
+	<li><a href="{%url 'app:RegistroCliente'%}">Registrar Cliente</a></li>
+	<li><a href="{%url 'app:ListarClientes'%}">Registrar Mascota</a></li>
+	<li><a href="#">Facturar</a></li>
         <li> <a href="#">{{user.first_name}}<span class="" ><i class="fas fa-chalkboard-teacher"></i></span></a>
             <ul>
                 <li><a href="{% url 'logout' %}"> Cerrar sesión</a></li>
@@ -37,15 +37,15 @@
 	  {% else %}
 	  <li><a href="#">Gestionar Usuarios</a>
                         <ul>
-                            <li><a href="RegistroUsuario">Registrar Usuario</a></li>
-                            <li><a href="BuscarUsuario">Buscar Usuario</a></li>
+                            <li><a href="{%url 'app:RegistroUsuario'%}">Registrar Usuario</a></li>
+			    <li><a href="{%url 'app:BuscarUsuario'%}">Buscar Usuario</a></li>
                         </ul>
                     </li>
 
                     <li><a href="#">Gestionar Servicios</a>
                         <ul>
-                            <li><a href="RegistroServicio">Registrar Servicio</a></li>
-                            <li><a href="BuscarServicio">Buscar Servicio</a></li>
+			  <li><a href="{% url 'app:RegistroServicio'%}">Registrar Servicio</a></li>
+			    <li><a href="{% url 'app:BuscarServicio'%}">Buscar Servicio</a></li>
                         </ul>
                     </li> 
 

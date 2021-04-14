@@ -107,7 +107,8 @@ class HistoriaForm(forms.ModelForm):
         widgets = {
             'Fecha_creacion': forms.DateInput(attrs={'class': 'form.control', 'placeholder':'AAAA-MM-DD'}), 
            
-            'Mascota_id': forms.Select(
+            'Mascota_id': AutocompleteSelect(Historia._meta.get_field('Mascota_id').remote_field,
+                admin.site,
                 attrs = { 'class': 'form.control', 'placeholder': 'Ingrese la mascota' })#llave foranea
         }
 

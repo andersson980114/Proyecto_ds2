@@ -3,7 +3,9 @@
 {% load static %}
 
 {% block cssV %}
-    <link rel="stylesheet" href="{% static 'app/css/RegistrarProducto.css' %}"> 
+    <link rel="stylesheet" href="{% static 'admin/css/autocomplete.css' %}"> 
+    <link rel="stylesheet" href="{% static 'admin/css/vendor/select2/select2.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/RegistrarProducto.css' %}">   
     <link rel="stylesheet" href="{% static 'app/css/BarraA.css' %}"> 
     <title>SCVA_VETERINARIO</title>
 {% endblock %} 
@@ -30,3 +32,10 @@
         </form>
 {% endblock%}
  
+{% block jsV %}
+    <script src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+    <script src="{% static 'admin/js/vendor/select2/select2.full.js' %}"></script>
+    <script src="{% static 'admin/js/jquery.init.js' %}"></script>
+    <script src="{% static 'admin/js/autocomplete.js' %}"></script>
+      
+{% endblock %}

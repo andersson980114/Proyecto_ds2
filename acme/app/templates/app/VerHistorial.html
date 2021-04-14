@@ -31,7 +31,7 @@
                                 <td>{{EntradaHistoria.Fecha}}</td>
                                 <td>{{EntradaHistoria.Tipo}}</td>
                                 <td>{{EntradaHistoria.Observaciones}}</td>   
-                                <td> <a href="{% url 'Detalles' EntradaHistoria.id %}" class="btn btn-primary">Detalles</a></td> 
+                                <td> <a href="{% url 'app:Detalles' EntradaHistoria.id %}" class="btn btn-primary">Detalles</a></td> 
                             </tr> 
                         {% endfor%}
                     </tbody>

@@ -48,7 +48,7 @@
                                 <td>{{Cliente.Cedula}}</td>
                                 <td>{{Cliente.Nombre}}</td>
                                 <td>{{Cliente.Apellido}}</td>   
-                                <td> <a href="{% url 'RegistroMascota' Cliente.id %}" class="btn btn-primary">Añadir Mascota</a></td> 
+                                <td> <a href="{% url 'app:RegistroMascota' Cliente.id %}" class="btn btn-primary">Añadir Mascota</a></td> 
                             </tr> 
                         {% endfor%}
                     </tbody>

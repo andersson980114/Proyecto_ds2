@@ -45,7 +45,7 @@
                         {% for Historia in historias %}
                             <tr>
                                 <td>{{Historia.Mascota_id}}</td>   
-                                <td> <a href="{% url 'VerHistorial' Historia.id %}" class="btn btn-primary">Ver Historial</a></td>                                 
+                                <td> <a href="{% url 'app:VerHistorial' Historia.id %}" class="btn btn-primary">Ver Historial</a></td>                                 
                             </tr> 
                         {% endfor%}
                     </tbody>

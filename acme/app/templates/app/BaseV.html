@@ -15,16 +15,16 @@
     <nav>
         <div class="logo"><strong><img src="{% static 'app/image/logo-acme.png' %}" alt=""></strong></div>
         <ul class="links">                     
-            <li><a href="{% url 'Index' %}">Gestionar historia clínica</a>
+            <li><a href="{% url 'app:Index' %}">Gestionar historia clínica</a>
                 <ul>
                     <li><a href="RegistrarHistorial">Crear historia clínica</a></li>
                     <li><a href="ConsultarHistorial">Consultar historia clínica</a></li>
                 </ul>
             </li>                 
 
-            <li><a href="{% url 'RegistrarEntrada' %}">Registrar Entrada </a></li>        
+            <li><a href="{% url 'app:RegistrarEntrada' %}">Registrar Entrada </a></li>        
 
-            <li> <a href="{% url 'Index' %}">{{user.first_name}} <span class="" ><i class="fas fa-user-md"></i></span></a>
+            <li> <a href="{% url 'app:Index' %}">{{user.first_name}} <span class="" ><i class="fas fa-user-md"></i></span></a>
                 <ul>
                     <li><a href="{% url 'logout' %}"> Cerrar sesión</a></li>
                 </ul>
