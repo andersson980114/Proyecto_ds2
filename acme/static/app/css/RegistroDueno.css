@@ -1,0 +1,149 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: url(image/fondo2.jpg) no-repeat center top;
+    background-size: cover ;
+    font-family: sans-serif;
+    height: 100vh;
+}
+
+img{
+    margin-top: 30px;
+    margin-left: 37%;
+    width: 27%;
+    height: 15%;
+}
+
+.loginBox{
+    margin-top: 240px;
+    margin-bottom: 150px;
+    width: 700px;
+    height: 450px;
+    background: #000000;
+    opacity: 80%;
+    color: #fff;
+    top: 20%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box; 
+    padding: 3% 3%; 
+    border-radius: 7px;
+}
+
+.loginBox h1{
+    margin: 0;
+    padding: 0 0 40px;
+    text-align: center;
+    font-family: sans-serif;
+    color: #FFF;
+    text-shadow: black 0.1em 0.1em ;
+    font-size: 35px;
+}
+
+.loginBox label{
+    margin: 0;
+    padding: 20px;
+    font-weight: bold;
+    text-shadow: black 0.1em 0.1em;
+    display: block;
+    font-size: 20px; 
+}
+
+.loginBox input{
+    width: 40%;
+    margin-bottom: 30px;
+}
+
+
+.loginBox select{
+    width: 40%;
+    margin: 0  5% 0 0 ;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: rgba(0, 0, 0, 0.685);
+    outline: none;
+    height: 40px;
+    color: rgb(255, 255, 255);
+    font-size: 15px;   
+}
+
+.loginBox input[type="date"]{  
+    margin: 10px  5% 0 0 ;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: rgba(46, 39, 39, 0.541);
+    outline: none;
+    height: 35px;
+    color: #fff;
+    font-size: 15px;   
+} 
+
+.loginBox input[type="email"],
+.loginBox input[type="text"],
+.loginBox input[type="number"],
+.loginBox input[type="password"]{ 
+    margin: 0  5% 0 0 ;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 15px;   
+}
+
+.btn, .btn2{
+    display: inline-block;
+    text-decoration: none;
+    background: #f50505; 
+    color: #fff;
+    text-shadow: black 0.1em 0.1em;
+    border-radius: 7px;
+
+}
+
+.btn{  
+    margin-top: 12%;
+    margin-left: 20%; 
+    padding: 10px 15px; 
+    font-size: 25px; 
+    transform: translate(-50%, -50%);
+}
+.RegistroDueño input[type="text"],
+.RegistroDueño input[type="number"],
+.RegistroDueño input[type="password"]{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 18px;  
+    margin-top: 5%; 
+}
+
+.btn2{  
+    margin-top: 13%;
+    margin-left: 30%; 
+    padding: 8px 20px;  
+    font-size: 20px; 
+    border-radius: 7px;
+    transform: translate(-15%, -130%);
+    text-align: center;
+}
+
+form span a{ 
+    padding: 0;
+    color: white;
+}
+
+.casilla{
+    padding: 0;
+    margin: 0;
+}
+
+.loginBox input[type="checkbox"]{
+    padding: 0;
+    margin: 0;
+}

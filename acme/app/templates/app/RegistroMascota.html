@@ -1,0 +1,60 @@
+{% extends 'app/BaseR.html' %}
+
+{% load static %}
+
+
+{% block cssR %}  
+    <link rel="stylesheet" href="{% static 'app/css/RegistroUsuario.css' %}"> 
+    <link rel="stylesheet" href="{% static 'app/css/BarraR.css' %}">  
+    <title>SCVA_RegistroPaciente</title>
+    
+{% endblock%}
+
+{% block contenidoR %}
+    <div class="loginBox"> 
+            <h1>Registro del Paciente</h1>
+        <form   action=""  method="POST">
+            
+            {% csrf_token %}
+            <div class="contenedor">
+                <div class="input-contenedor"  >
+                    <i class="far fa-edit"></i> 
+                    Cliente: {{cliente.Cedula}}  
+                </div>
+
+                <div class="input-contenedor" >
+                    <i class="far fa-edit"></i>
+                     {{form.nombre}} 
+                    
+                     <i class="fas fa-paw"></i>
+                    {{form.especie}}
+                </div>
+                     
+                <div class="input-contenedor">
+                    <i class="fas fa-paw"></i> 
+                    {{form.raza}} 
+
+                    <i class="fas fa-transgender"></i>
+                    Sexo: {{form.sexo}}
+                </div>
+                     
+                <div class="input-contenedor">
+                    
+                        Fecha de nacimiento: {{form.fecha}}
+                </div> 
+             
+            <button type="submit" id="boton" class="btn">Registrar</button>
+            
+        </form>
+    </div>
+
+{% endblock%}
+
+{% block js %}
+    <script src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+    <script src="{% static 'admin/js/vendor/select2/select2.full.js' %}"></script>
+    <script src="{% static 'admin/js/jquery.init.js' %}"></script>
+    <script src="{% static 'admin/js/autocomplete.js' %}"></script>
+      
+    
+{% endblock %}

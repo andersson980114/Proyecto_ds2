@@ -1,0 +1,48 @@
+{% extends 'app/BaseV.html' %}
+
+{% load static %}
+
+
+{% block cssV %} 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'app/css/ListarClientes.css' %}"> 
+<link rel="stylesheet" href="{% static 'app/css/BarraA.css' %}"> 
+<title>SCVA_VETERINARIO</title>
+{% endblock%}
+
+{% block contenidoV %}
+
+{% if entradas %}
+        <div class="loginBox"> 
+            <h1>Historia Clínica</h1>   
+            <div class="card"> 
+                <table class = "table table-striped table-hover ">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Tipo</th>
+                            <th>Observaciones</th> 
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for EntradaHistoria in entradas %}
+                            <tr>
+                                <td>{{EntradaHistoria.Fecha}}</td>
+                                <td>{{EntradaHistoria.Tipo}}</td>
+                                <td>{{EntradaHistoria.Observaciones}}</td>   
+                                <td> <a href="{% url 'app:Detalles' EntradaHistoria.id %}" class="btn btn-primary">Detalles</a></td> 
+                            </tr> 
+                        {% endfor%}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    {% else %}
+        <div class="loginBox"> 
+            <h1>No existen Entradas registrados</h1> 
+        </div>
+    {% endif %}
+    
+{% endblock %}

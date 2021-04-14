@@ -1,0 +1,142 @@
+/*BARRA PARA LAS FUNCIONES DEL ADMINISTRADOR */
+body{
+    padding: 0;
+    margin: 0;
+    background: url(../image/fondo4.png) no-repeat center;
+}
+
+nav{
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    top: 0;
+    font-family: 'Montserrat', sans-serif;
+    padding: 0 5%;
+    height: 90px;
+    background-color: rgb(0, 0, 0);
+    /*margin: 20px auto;*/
+}
+
+nav .logo {
+    padding: 0;
+    float: left;
+    width: 40%;
+    height: 90px;
+    display: flex;
+    align-items: center;    
+    color: white;
+}
+
+nav img{
+    margin-top: 0;
+    margin-left: 3%;
+    width: 55%;
+    height: 90px;
+}
+
+nav .links{
+    float: right;
+    padding: 0;
+    margin: 0;
+    width: 57%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav .links li{
+    list-style: none;
+}
+
+nav .links a{
+    display: block;
+    padding: 1em;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+nav .links a:hover{
+    background-color: rgb(252, 10, 51);
+}
+ul,ol{
+    list-style: none;
+}
+
+nav .links{
+    float: left;
+}
+nav li ul{
+    padding: 0; 
+    display:none ;
+    position: absolute;
+    min-width: 10px;
+    background-color: rgb(0, 0, 0);
+
+}
+
+nav li:hover > ul{
+    display: block;
+}
+
+nav li ul li {
+    position: relative;
+}
+
+
+nav .links span{
+    color:rgb(255, 255, 255);
+    font-size: 30px;
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+.slider{
+    width: 100%;
+    margin: auto;
+    height: 90%;
+    overflow:  hidden;
+
+}
+
+.slider ul{
+    padding: 0;
+    display: flex;
+    width: 400%;
+
+    animation: slider 60s infinite alternate ;
+    animation-timing-function: ease;
+   
+
+   
+   
+}
+
+.slider li{
+    width: 100%;
+    list-style:none;
+}
+
+.slider li img{
+    width: 100%;
+    
+}
+@keyframes slider{
+    0% {margin-left: 0;}
+    25% {margin-left: 0;}
+
+    25% {margin-left: -100%;}
+    50% {margin-left: -100%;}
+
+    50% {margin-left: -200%;}
+    75% {margin-left: -200%;}
+    
+    75% {margin-left: -300%;}
+    100% {margin-left: -300%;}
