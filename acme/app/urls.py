@@ -1,6 +1,10 @@
 from django.urls import path
 from django.views.i18n import JavaScriptCatalog
+<<<<<<< HEAD
 from .views import Index, RegistroCliente, RegistroUsuario, RegistroMascota, BuscarUsuario, ModificarUsuario, EliminarUsuario, ListarClientes, RegistroServicio, BuscarServicio ,ModificarServicio, EliminarServicio, RegistrarHistorial, ConsultarHistorial, RegistrarEntrada, VerHistorial, Detalles
+=======
+from .views import Index, RegistroCliente, RegistroUsuario, RegistroMascota, BuscarUsuario, ModificarUsuario, EliminarUsuario, ListarClientes, RegistroServicio, BuscarServicio ,ModificarServicio, EliminarServicio, RegistrarHistorial, ConsultarHistorial, RegistrarEntrada
+>>>>>>> f6165acb6fcb9aa3836da787fe1db54b30dbd95c
 #2 se define una url para cada vew(las vews se debesn importar de .vews)
 urlpatterns = [
     path('', Index, name="Index"), 

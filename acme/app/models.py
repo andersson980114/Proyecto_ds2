@@ -122,7 +122,11 @@ class Mascota(models.Model):
         ordering = ['Nombre'] #se ordena según el parametro indicado(ej: nombre, apellido o cedula)
 
     def __str__(self):
+<<<<<<< HEAD
         return f'{self.Cliente_id} - {self.Nombre}'
+=======
+        return f'{self.Cliente_id}: {self.Nombre}'
+>>>>>>> f6165acb6fcb9aa3836da787fe1db54b30dbd95c
 
 
 class Historia(models.Model):
@@ -153,6 +157,10 @@ class EntradaHistoria(models.Model):
         ordering = ['Fecha'] #se ordena según el parametro indicado(ej: nombre, apellido o cedula)
 
     def __str__(self):
+<<<<<<< HEAD
         return f'{self.id}'
+=======
+        return self.id
+>>>>>>> f6165acb6fcb9aa3836da787fe1db54b30dbd95c
     
   

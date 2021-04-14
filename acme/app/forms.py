@@ -1,7 +1,10 @@
 
 from django.contrib.admin.widgets import AutocompleteSelect, AdminDateWidget
+<<<<<<< HEAD
 from django.contrib import admin
 from django import forms
+=======
+>>>>>>> f6165acb6fcb9aa3836da787fe1db54b30dbd95c
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
 from .models import Usuario, Cliente, Mascota, Servicio, Historia, EntradaHistoria
@@ -76,11 +79,20 @@ class ClienteForm(forms.ModelForm):
 
 
 class MascotaForm(forms.Form):   
+<<<<<<< HEAD
     nombre = forms.CharField(widget=forms.TextInput(attrs={'class': 'form.control','placeholder':'Nombre de la Mascota'}))
     especie = forms.CharField(widget=forms.TextInput(attrs={'class': 'form.control','placeholder':'Especie'}))
     raza = forms.CharField(widget=forms.TextInput(attrs={'class': 'form.control','placeholder':'Raza'}))
     fecha = forms.DateField(widget=forms.DateInput(attrs={'class': 'form.control','placeholder':'AAAA-MM-DD'}))
     sexo = forms.ChoiceField(choices=[(1,'Macho'),(2,'Hembra')])
+=======
+    nombre = forms.CharField(max_length=20,label='Nombre de la mascota')
+    especie = forms.CharField(max_length=20,label='Especie')
+    raza = forms.CharField(max_length=20,label='Raza') 
+    fecha = forms.DateField(widget=AdminDateWidget())
+    sexo = forms.ChoiceField(choices=[(1,'Macho'),(2,'Hembra')])
+    
+>>>>>>> f6165acb6fcb9aa3836da787fe1db54b30dbd95c
 
 
 class ServicioForm(forms.ModelForm):   

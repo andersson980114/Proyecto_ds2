@@ -3,9 +3,29 @@
 {% load static %}
 
 
+<<<<<<< HEAD
 {% block cssR %}  
     <link rel="stylesheet" href="{% static 'app/css/RegistroUsuario.css' %}"> 
     <link rel="stylesheet" href="{% static 'app/css/BarraR.css' %}">  
+=======
+{% block cssR %} 
+        
+    <link rel="stylesheet" href="{% static 'admin/css/vendor/select2/select2.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/css/autocomplete.css' %}">
+    <!--Buscador-->
+    <link rel="stylesheet" href="{% static 'admin/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/css/widgets.css' %}">
+
+    <script src="{% url 'js-catlog' %}"></script>
+    <script src="{% static 'admin/js/core.js' %}"></script>
+    <script src="/static/admin/js/admin/DateTimeShortcuts.js"></script>
+    <script src="/admin/jsi18n/"></script>
+    <script src="/static/admin/js/calendar.js"></script>  
+
+    <link rel="stylesheet" href="{% static 'app/css/RegistroUsuario.css' %}"> 
+    <link rel="stylesheet" href="{% static 'app/css/BarraR.css' %}"> 
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css">
+>>>>>>> f6165acb6fcb9aa3836da787fe1db54b30dbd95c
     <title>SCVA_RegistroPaciente</title>
     
 {% endblock%}
@@ -24,6 +44,7 @@
 
                 <div class="input-contenedor" >
                     <i class="far fa-edit"></i>
+<<<<<<< HEAD
                      {{form.nombre}} 
                     
                      <i class="fas fa-paw"></i>
@@ -41,6 +62,24 @@
                 <div class="input-contenedor">
                     
                         Fecha de nacimiento: {{form.fecha}}
+=======
+                    Nombre mascota: {{form.nombre}} 
+                </div>
+                     
+                <div class="input-contenedor">
+                    <i class="fas fa-paw"></i>
+                    Especie: {{form.especie}}
+                 
+                    <i class="fas fa-paw"></i> 
+                    Raza: {{form.raza}} 
+                </div>
+                     
+                <div class="input-contenedor">
+                    <i class="fas fa-transgender"></i>
+                    Sexo: {{form.sexo}}
+                
+                    Fecha de nacimiento: {{form.fecha}}
+>>>>>>> f6165acb6fcb9aa3836da787fe1db54b30dbd95c
                 </div> 
              
             <button type="submit" id="boton" class="btn">Registrar</button>

@@ -222,8 +222,13 @@ def RegistrarHistorial(request):
 @login_required
 def ConsultarHistorial(request):
     queryset = request.GET.get("Buscar")
+<<<<<<< HEAD
     historias = Historia.objects.all() 
     #cliente = Historia.objects.all().filter( type= Cliente.objects.get(Cedula=queryset))
+=======
+    historias = Historia.objects.all()
+     
+>>>>>>> f6165acb6fcb9aa3836da787fe1db54b30dbd95c
     if queryset:
         historias = Historia.objects.filter(
             Q(Mascota_id__Cliente_id__Cedula = queryset)|
@@ -236,6 +241,7 @@ def ConsultarHistorial(request):
     }
     return render(request,'app/ConsultarHistorial.html', data) 
 
+<<<<<<< HEAD
 #@login_required
 def VerHistorial(request, id):
 
@@ -247,6 +253,8 @@ def VerHistorial(request, id):
     return render(request,'app/VerHistorial.html', data) 
 
 
+=======
+>>>>>>> f6165acb6fcb9aa3836da787fe1db54b30dbd95c
 
 @login_required
 def RegistrarEntrada(request): 

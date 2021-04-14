@@ -51,7 +51,7 @@ img{
 }
 
 .loginBox input{
-    width: 40%;
+    width: 40%; 
     margin-bottom: 30px;
 }
 
@@ -67,10 +67,25 @@ img{
     font-size: 15px;   
 }
 
+<<<<<<< HEAD
 .loginBox input[type="email"],
 .loginBox input[type="text"],
 .loginBox input[type="number"],
 .loginBox input[type="password"]{ 
+=======
+.loginBox input[type="date"]{  
+    margin: 10px  5% 0 0 ;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: rgba(46, 39, 39, 0.541);
+    outline: none;
+    height: 35px;
+    color: #fff;
+    font-size: 15px;   
+} 
+ 
+.loginBox input[type="text"] {   
+>>>>>>> f6165acb6fcb9aa3836da787fe1db54b30dbd95c
     margin: 0  5% 0 0 ;
     border: none;
     border-bottom: 1px solid #fff;
@@ -80,6 +95,7 @@ img{
     color: #fff;
     font-size: 15px;   
 }
+
 
 .btn{  
     margin-top: 12%;
@@ -94,10 +110,14 @@ img{
     border-radius: 7px;
     transform: translate(-50%, -50%);
 }
+<<<<<<< HEAD
  
  
 form span a{ 
     padding: 0;
+=======
+
+form span a{
+>>>>>>> f6165acb6fcb9aa3836da787fe1db54b30dbd95c
     color: white;
 }
-
