@@ -4,7 +4,7 @@ from django.contrib import admin
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
-from .models import Usuario, Cliente, Mascota, Servicio, Historia, EntradaHistoria, Factura
+from .models import Usuario, Cliente, Mascota, Servicio, Historia, EntradaHistoria, Factura, DetalleFactura
 from django.core.exceptions import ValidationError
 
 
@@ -130,7 +130,8 @@ class EntradaHistoriaForm(forms.ModelForm):
             'Veterinario': forms.TextInput(
                 attrs = {  'class': 'form.control', 'placeholder': 'Ingrese el veterinario' }),           
 
-            'Fecha': forms.DateInput(attrs={'class': 'form.control', 'placeholder':'AAAA-MM-DD'}), 
+            'Fecha': forms.DateTimeInput (attrs={'class': 'form.control', 'placeholder':'AAAA-MM-DD'}),
+
 
             'Tipo': forms.TextInput(
                 attrs = {  'class': 'form.control', 'placeholder': 'Ingrese el tipo de la entrada' }),
@@ -149,11 +150,29 @@ class FacturaForm(forms.ModelForm):
             'Cliente_id': AutocompleteSelect(Factura._meta.get_field('Cliente_id').remote_field,
                 admin.site,
                 attrs = { 'class': 'form.control', 'placeholder': 'Ingrese el cliente' }),#llave foranea
-                
             'Fecha' : forms.DateInput(attrs={'class': 'form.control', 'placeholder':'AAAA-MM-DD'}), 
            
             'Hora' : forms.TimeInput(attrs={'class': 'form.control', 'placeholder':'Hora'}),
 
             'total': forms.NumberInput(attrs={'class': 'form.control', 'placeholder':'Total'}),
         }
+
+class DetalleForm(forms.ModelForm):   
+    class Meta:
+        model = DetalleFactura
+                 #Datos con los que se llenara el formulario (atributos de la tabla sin el ID)
+        fields = ['Factura_id', 'Servicio_id', 'Cantidad']
+        widgets = {
+
+            'Factura_id': AutocompleteSelect(DetalleFactura._meta.get_field('Factura_id').remote_field,
+                admin.site,
+                attrs = { 'class': 'form.control', 'placeholder': 'Ingrese el cliente' }),#llave foranea
+
+            'Servicio_id': AutocompleteSelect(DetalleFactura._meta.get_field('Servicio_id').remote_field,
+                admin.site,
+                attrs = { 'class': 'form.control', 'placeholder': 'Ingrese el cliente' }),#llave foranea
+
+            'Cantidad': forms.NumberInput(attrs={'class': 'form.control', 'placeholder':'Cantidad'}),
+        }
+    
     

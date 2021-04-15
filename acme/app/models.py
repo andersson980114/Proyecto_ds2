@@ -143,7 +143,7 @@ class EntradaHistoria(models.Model):
     id = models.AutoField(primary_key=True)
     Historia_id = models.ForeignKey(Historia, on_delete = models.CASCADE)
     Veterinario = models.CharField('Veterinario',max_length=50, blank=False, null=False)
-    Fecha =models.DateField('Fecha', blank=False, null=False) 
+    Fecha =models.DateTimeField('Fecha', auto_now_add=False , null=False) 
     Tipo = models.CharField('Tipo',max_length=50, blank=False, null=False) 
     Observaciones = models.CharField('Observaciones',max_length=2000, blank=False, null=False)
     
@@ -159,7 +159,7 @@ class Factura(models.Model):
     id = models.AutoField(primary_key=True)
     Cliente_id = models.ForeignKey(Cliente, on_delete = models.CASCADE)
     Fecha = models.DateField('Fecha Compra', auto_now_add= False, auto_now=False,  blank=True) 
-    Hora = models.DateField('Hora Compra', auto_now_add= False, auto_now=False,  blank=True ) 
+    Hora = models.DateTimeField('Hora Compra', auto_now_add= False, auto_now=False,  blank=True ) 
     total = models.DecimalField('total', decimal_places=2, max_digits=7)
 
 
@@ -173,14 +173,14 @@ class Factura(models.Model):
 
 class DetalleFactura(models.Model):
     id = models.AutoField(primary_key=True)
-    id_Factura = models.ForeignKey(Factura, on_delete = models.CASCADE)
-    id_Servicio = models.ForeignKey(Servicio, on_delete = models.CASCADE) 
+    Factura_id = models.ForeignKey(Factura, on_delete = models.CASCADE)
+    Servicio_id = models.ForeignKey(Servicio, on_delete = models.CASCADE) 
     Cantidad = models.IntegerField('Cantidad', blank=False, null=False)
 
     class Meta:
         verbose_name = 'DetalleFactura'
         verbose_name_plural= 'DetalleFactura'
-        ordering = ['id_Factura'] #se ordena según el parametro indicado(ej: nombre, apellido o cedula)
+        ordering = ['Factura_id'] #se ordena según el parametro indicado(ej: nombre, apellido o cedula)
 
     def __str__(self):
         return f'{self.id}:  {self.Cliente_id}:  {self.Cliente_id__Nombre}'

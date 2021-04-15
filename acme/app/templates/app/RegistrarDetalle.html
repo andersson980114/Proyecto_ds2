@@ -10,32 +10,30 @@
 
 {% block contenidoR %} 
     <div class="loginBox"> 
-        <h1>Registro de factura</h1>
+        <h1>Registro de detalles</h1>
         <form   action=""  method="POST">
             {% csrf_token %}  
             <div class="contenedor">
                 <div class="input-contenedor"> 
 
                     <i class="fas fa-user-edit"></i>
-                    {{form.Cliente_id}} 
+                    {{form.Factura_id}} 
+
                 
-                    <i class="far fa-calendar-alt"></i>
-                    {{form.Fecha}}  
+                    <i class="fas fa-concierge-bell"></i>
+                    {{form.Servicio_id}}  
                 </div>
              
-                <div class="input-contenedor">
-                    <i class="fas fa-clock"></i>
-                    {{form.Hora}}
+                
+                    <i class="fas fa-boxes"></i>
+                    {{form.Cantidad}}
                  
-                    <i class="fas fa-dollar-sign"></i>
-                    {{form.total}}
+                   
                 </div>
              
             
-            <button type="submit" id="boton" class="btn">Registrar y asignar detalles</button>
+            <button type="submit" id="boton" class="btn">Registrar</button>
             
         </form>
     </div>
 {% endblock %}
-
- 

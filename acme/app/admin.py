@@ -1,5 +1,5 @@
 from django.contrib import admin
-from app.models import Usuario, Cliente, Mascota, Servicio, Historia, EntradaHistoria, Factura
+from app.models import Usuario, Cliente, Mascota, Servicio, Historia, EntradaHistoria, Factura, DetalleFactura
 
 # Register your models here.
 
@@ -26,3 +26,4 @@ admin.site.register(Servicio)
 admin.site.register(Historia, HistoriaAdmin)
 admin.site.register(EntradaHistoria, EntradaHistoriaAdmin)
 admin.site.register(Factura)
+admin.site.register(DetalleFactura)
