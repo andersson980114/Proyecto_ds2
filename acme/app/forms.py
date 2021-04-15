@@ -4,7 +4,9 @@ from django.contrib import admin
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
-from .models import Usuario, Cliente, Mascota, Servicio, Historia, EntradaHistoria
+from .models import Usuario, Cliente, Mascota, Servicio, Historia, EntradaHistoria, Factura
+from django.core.exceptions import ValidationError
+
 
 class UsuarioForm(forms.ModelForm): 
 
@@ -100,6 +102,8 @@ class ServicioForm(forms.ModelForm):
         }
 
 class HistoriaForm(forms.ModelForm):   
+    
+
     class Meta:
         model = Historia
                  #Datos con los que se llenara el formulario (atributos de la tabla sin el ID)
@@ -110,7 +114,7 @@ class HistoriaForm(forms.ModelForm):
             'Mascota_id': AutocompleteSelect(Historia._meta.get_field('Mascota_id').remote_field,
                 admin.site,
                 attrs = { 'class': 'form.control', 'placeholder': 'Ingrese la mascota' })#llave foranea
-        }
+                }
 
 class EntradaHistoriaForm(forms.ModelForm):   
     class Meta:
@@ -133,5 +137,23 @@ class EntradaHistoriaForm(forms.ModelForm):
             
             'Observaciones': forms.Textarea(
                 attrs = {  "rows":10, "cols":80, 'placeholder': 'Ingrese las observaciones' })
+        }
+    
+class FacturaForm(forms.ModelForm):   
+    class Meta:
+        model = Factura
+                 #Datos con los que se llenara el formulario (atributos de la tabla sin el ID)
+        fields = ['Cliente_id', 'Fecha', 'Hora', 'total']
+        widgets = {
+
+            'Cliente_id': AutocompleteSelect(Factura._meta.get_field('Cliente_id').remote_field,
+                admin.site,
+                attrs = { 'class': 'form.control', 'placeholder': 'Ingrese el cliente' }),#llave foranea
+                
+            'Fecha' : forms.DateInput(attrs={'class': 'form.control', 'placeholder':'AAAA-MM-DD'}), 
+           
+            'Hora' : forms.TimeInput(attrs={'class': 'form.control', 'placeholder':'Hora'}),
+
+            'total': forms.NumberInput(attrs={'class': 'form.control', 'placeholder':'Total'}),
         }
     

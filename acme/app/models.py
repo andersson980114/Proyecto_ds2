@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
-
 # Create your models here.
 
 #3 crear los modelos de las tablas de la base de datos
@@ -98,7 +97,7 @@ class Cliente(models.Model):
     Telefono = models.CharField('Telefono',max_length=20, blank=False, null=False)
     Direccion = models.CharField('Direccion',max_length=50, blank=False, null=False)
     Correo = models.EmailField('Correo',max_length=50, blank=False, null=False) 
-    Cedula = models.CharField('Cedula',max_length=20, blank=False, null=False)
+    Cedula = models.CharField('Cedula',max_length=20, blank=False, null=False, unique=True)
       
     class Meta:
         verbose_name = 'Cliente'
@@ -128,13 +127,14 @@ class Mascota(models.Model):
 class Historia(models.Model):
     id = models.AutoField(primary_key=True)
     Fecha_creacion = models.DateField('Fecha de Creación', blank=False, null=False) 
-    Mascota_id = models.ForeignKey(Mascota, on_delete = models.CASCADE) 
+    Mascota_id = models.ForeignKey(Mascota, on_delete = models.CASCADE,unique=True) 
+        
 
     class Meta:
         verbose_name = 'Historia'
         verbose_name_plural= 'Historias'
         ordering = ['id'] #se ordena según el parametro indicado(ej: nombre, apellido o cedula)
-
+    
     def __str__(self):
         return f'{self.Mascota_id}'
 
@@ -184,3 +184,4 @@ class DetalleFactura(models.Model):
 
     def __str__(self):
         return f'{self.id}:  {self.Cliente_id}:  {self.Cliente_id__Nombre}'
+

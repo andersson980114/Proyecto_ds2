@@ -1,0 +1,41 @@
+{% extends 'app/BaseR.html' %}
+
+{% load static %}
+
+{% block cssR %}
+    <link rel="stylesheet" href="{% static 'app/css/RegistroUsuario.css' %}"> 
+    <link rel="stylesheet" href="{% static 'app/css/BarraR.css' %}"> 
+    <title>SCVA_RECEPCIONISTA</title>
+{% endblock %} 
+
+{% block contenidoR %} 
+    <div class="loginBox"> 
+        <h1>Registro de factura</h1>
+        <form   action=""  method="POST">
+            {% csrf_token %}  
+            <div class="contenedor">
+                <div class="input-contenedor"> 
+
+                    <i class="fas fa-user-edit"></i>
+                    {{form.Cliente_id}} 
+                
+                    <i class="far fa-calendar-alt"></i>
+                    {{form.Fecha}}  
+                </div>
+             
+                <div class="input-contenedor">
+                    <i class="far fa-calendar-alt"></i>
+                    {{form.Hora}}
+                 
+                    <i class="fas fa-dollar-sign"></i>
+                    {{form.total}}
+                </div>
+             
+            
+            <button type="submit" id="boton" class="btn">Registrar</button>
+            
+        </form>
+    </div>
+{% endblock %}
+
+ 
