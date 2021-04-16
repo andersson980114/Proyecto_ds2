@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.utils import timezone
 # Create your models here.
 
 #3 crear los modelos de las tablas de la base de datos
@@ -138,12 +139,18 @@ class Historia(models.Model):
     def __str__(self):
         return f'{self.Mascota_id}'
 
+def get_default_my_hour():
+
+    hour = timezone.now()
+    formatedHour = hour.strftime("%H:%M:%S")
+    return formatedHour
 
 class EntradaHistoria(models.Model):
     id = models.AutoField(primary_key=True)
     Historia_id = models.ForeignKey(Historia, on_delete = models.CASCADE)
     Veterinario = models.CharField('Veterinario',max_length=50, blank=False, null=False)
     Fecha =models.DateTimeField('Fecha', auto_now_add=False , null=False) 
+    Hora = models.CharField(max_length=50, default=get_default_my_hour) 
     Tipo = models.CharField('Tipo',max_length=50, blank=False, null=False) 
     Observaciones = models.CharField('Observaciones',max_length=2000, blank=False, null=False)
     
@@ -154,12 +161,15 @@ class EntradaHistoria(models.Model):
 
     def __str__(self):
         return f'{self.id}'
-    
+
+
+
 class Factura(models.Model):
     id = models.AutoField(primary_key=True)
     Cliente_id = models.ForeignKey(Cliente, on_delete = models.CASCADE)
     Fecha = models.DateField('Fecha Compra', auto_now_add= False, auto_now=False,  blank=True) 
-    Hora = models.DateTimeField('Hora Compra', auto_now_add= False, auto_now=False,  blank=True ) 
+    #Hora = models.DateTimeField('Hora Compra', auto_now_add= False, auto_now=False,  blank=True ) 
+    Hora = models.CharField(max_length=50, default=get_default_my_hour, blank= True) 
     total = models.DecimalField('total', decimal_places=2, max_digits=7)
 
 
@@ -169,7 +179,7 @@ class Factura(models.Model):
         ordering = ['Fecha'] #se ordena según el parametro indicado(ej: nombre, apellido o cedula)
 
     def __str__(self):
-        return f'{self.id}:  {self.Cliente_id}:  {self.Cliente_id__Nombre}'
+        return f'{self.id}:  {self.Cliente_id} '
 
 class DetalleFactura(models.Model):
     id = models.AutoField(primary_key=True)
@@ -183,5 +193,5 @@ class DetalleFactura(models.Model):
         ordering = ['Factura_id'] #se ordena según el parametro indicado(ej: nombre, apellido o cedula)
 
     def __str__(self):
-        return f'{self.id}:  {self.Cliente_id}:  {self.Cliente_id__Nombre}'
+        return f'{self.id}:  {self.Factura_id}'
 

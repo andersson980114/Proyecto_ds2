@@ -120,7 +120,7 @@ class EntradaHistoriaForm(forms.ModelForm):
     class Meta:
         model = EntradaHistoria
                  #Datos con los que se llenara el formulario (atributos de la tabla sin el ID)
-        fields = ['Historia_id', 'Veterinario', 'Fecha', 'Tipo', 'Observaciones']
+        fields = ['Historia_id', 'Veterinario', 'Fecha', 'Hora', 'Tipo', 'Observaciones']
         widgets = {
 
             'Historia_id': AutocompleteSelect(EntradaHistoria._meta.get_field('Historia_id').remote_field,
@@ -131,6 +131,8 @@ class EntradaHistoriaForm(forms.ModelForm):
                 attrs = {  'class': 'form.control', 'placeholder': 'Ingrese el veterinario' }),           
 
             'Fecha': forms.DateTimeInput (attrs={'class': 'form.control', 'placeholder':'AAAA-MM-DD'}),
+
+            'Hora' : forms.TimeInput(attrs={'class': 'form.control', 'placeholder':'Hora'}),
 
 
             'Tipo': forms.TextInput(
@@ -155,6 +157,7 @@ class FacturaForm(forms.ModelForm):
             'Hora' : forms.TimeInput(attrs={'class': 'form.control', 'placeholder':'Hora'}),
 
             'total': forms.NumberInput(attrs={'class': 'form.control', 'placeholder':'Total'}),
+            #'total' : forms.NumberInput(attrs={'readonly':'readonly'})
         }
 
 class DetalleForm(forms.ModelForm):   
@@ -166,11 +169,11 @@ class DetalleForm(forms.ModelForm):
 
             'Factura_id': AutocompleteSelect(DetalleFactura._meta.get_field('Factura_id').remote_field,
                 admin.site,
-                attrs = { 'class': 'form.control', 'placeholder': 'Ingrese el cliente' }),#llave foranea
+                attrs = { 'class': 'form.control', 'placeholder': 'Ingrese la factura' }),#llave foranea
 
             'Servicio_id': AutocompleteSelect(DetalleFactura._meta.get_field('Servicio_id').remote_field,
                 admin.site,
-                attrs = { 'class': 'form.control', 'placeholder': 'Ingrese el cliente' }),#llave foranea
+                attrs = { 'class': 'form.control', 'placeholder': 'Ingrese el servicio' }),#llave foranea
 
             'Cantidad': forms.NumberInput(attrs={'class': 'form.control', 'placeholder':'Cantidad'}),
         }

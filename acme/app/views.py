@@ -294,7 +294,7 @@ def RegistrarFactura(request):
         if formulario.is_valid():
             formulario.save() 
             messages.success(request, "Factura registrada")
-            return redirect('app:RegistrarFactura')
+            return redirect('app:RegistrarDetalle')
         else:
             messages.success(request, "Ha ocurrido un error. Intentelo de nuevo")
 
