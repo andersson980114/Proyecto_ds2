@@ -23,6 +23,7 @@ class ClienteAdmin(admin.ModelAdmin):
 
 class FacturaAdmin(admin.ModelAdmin):
     autocomplete_fields = ['Cliente_id']
+    search_fields = ('id'), ('Cliente_id__Cedula')
     ordering = ['Cliente_id']
 
 class ServicioAdmin(admin.ModelAdmin):
@@ -30,7 +31,7 @@ class ServicioAdmin(admin.ModelAdmin):
     ordering = ['id']
 
 class DetalleFacturaAdmin(admin.ModelAdmin):
-    autocomplete_fields = ['Servicio_id']
+    autocomplete_fields = [('Servicio_id'), ('Factura_id')]
     ordering = ['Servicio_id']
 
 

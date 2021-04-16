@@ -179,7 +179,7 @@ class Factura(models.Model):
         ordering = ['Fecha'] #se ordena según el parametro indicado(ej: nombre, apellido o cedula)
 
     def __str__(self):
-        return f'{self.id}:  {self.Cliente_id} '
+        return f'{self.id} -  {self.Cliente_id} '
 
 class DetalleFactura(models.Model):
     id = models.AutoField(primary_key=True)

@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.contrib.auth import authenticate, login
-from .models import Usuario, Cliente, Mascota, Servicio , Historia, EntradaHistoria
+from .models import Usuario, Cliente, Mascota, Servicio , Historia, EntradaHistoria, Factura, DetalleFactura
 from .forms import UsuarioForm, ClienteForm, MascotaForm, ServicioForm, HistoriaForm, EntradaHistoriaForm, FacturaForm, DetalleForm
 from django.contrib.auth.models import User 
 from django.contrib.auth.decorators import login_required
