@@ -1,0 +1,49 @@
+{% extends 'app/BaseR.html' %}
+
+{% load static %}
+
+{% block cssR %}
+    <link rel="stylesheet" href="{% static 'admin/css/autocomplete.css' %}"> 
+    <link rel="stylesheet" href="{% static 'admin/css/vendor/select2/select2.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/RegistroUsuario.css' %}"> 
+    <link rel="stylesheet" href="{% static 'app/css/BarraR.css' %}"> 
+    <title>SCVA_RECEPCIONISTA</title>
+{% endblock %} 
+
+{% block contenidoR %} 
+    <div class="loginBox"> 
+        <h1>Registro de factura</h1>
+        <form   action=""  method="POST">
+            {% csrf_token %}  
+            <div class="input-contenedor"> 
+
+                <i class="fas fa-user-edit"></i>
+                {{form.Cliente_id}} 
+                
+                <i class="far fa-calendar-alt"></i>
+                {{form.Fecha}}  
+                
+             
+                <div class="input-contenedor">
+                    <i class="fas fa-clock"></i>
+                    {{form.Hora}}
+                 
+                    <i class="fas fa-dollar-sign"></i>
+                    {{form.total}}
+                </div>
+             
+            
+            <button type="submit" id="boton" class="btn">Registrar y asignar detalles</button>
+            
+        </form>
+    </div>
+{% endblock %}
+{% block js %}
+    <script src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+    <script src="{% static 'admin/js/vendor/select2/select2.full.js' %}"></script>
+    <script src="{% static 'admin/js/jquery.init.js' %}"></script>
+    <script src="{% static 'admin/js/autocomplete.js' %}"></script>
+      
+{% endblock %}
+
+ 

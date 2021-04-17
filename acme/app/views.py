@@ -4,8 +4,8 @@ from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.contrib.auth import authenticate, login
-from .models import Usuario, Cliente, Mascota, Servicio , Historia, EntradaHistoria
-from .forms import UsuarioForm, ClienteForm, MascotaForm, ServicioForm, HistoriaForm, EntradaHistoriaForm
+from .models import Usuario, Cliente, Mascota, Servicio , Historia, EntradaHistoria, Factura, DetalleFactura
+from .forms import UsuarioForm, ClienteForm, MascotaForm, ServicioForm, HistoriaForm, EntradaHistoriaForm, FacturaForm, DetalleForm
 from django.contrib.auth.models import User 
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
@@ -282,6 +282,40 @@ def Detalles(request, id):
         data['form']= formulario
 
     return render(request, 'app/Detalles.html', data)
+
+@login_required
+def RegistrarFactura(request):
+    data = {
+        'form' : FacturaForm()
+    } 
+
+    if request.method == 'POST':
+        formulario = FacturaForm(data = request.POST)
+        if formulario.is_valid():
+            formulario.save() 
+            messages.success(request, "Factura registrada")
+            return redirect('app:RegistrarDetalle')
+        else:
+            messages.success(request, "Ha ocurrido un error. Intentelo de nuevo")
+
+    return render(request, 'app/RegistrarFactura.html', data)
+
+@login_required
+def RegistrarDetalle(request):
+    data = {
+        'form' : DetalleForm()
+    } 
+
+    if request.method == 'POST':
+        formulario = DetalleForm(data = request.POST)
+        if formulario.is_valid():
+            formulario.save() 
+            messages.success(request, "Detalle registrada")
+            return redirect('app:RegistrarDetalle')
+        else:
+            messages.success(request, "Ha ocurrido un error. Intentelo de nuevo")
+
+    return render(request, 'app/RegistrarDetalle.html', data)
 
     
 
