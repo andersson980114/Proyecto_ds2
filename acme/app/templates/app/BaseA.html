@@ -45,6 +45,7 @@
     
     <div class="contenido">
         <!--Base para agregar contenido-->
+         
         {% block contenidoA %}
        
         {% endblock %}
@@ -52,6 +53,20 @@
     </div>
     <br>
 </body>
-
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        {% if messages %}
+            {% for m in messages%}
+                <script>
+                    Swal.fire({
+                        "title": "Felicitaciones",
+                        "text":"{{m}}",
+                        "icon":"success"
+                    })
+                </script> 
+            {% endfor%} 
+        {% endif%}
+        {% block jsA %}
+       
+        {% endblock %}
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </html>

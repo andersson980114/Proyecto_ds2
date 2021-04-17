@@ -102,3 +102,8 @@ form span a{
     color: white;
 }
 
+.loginBox a{
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}

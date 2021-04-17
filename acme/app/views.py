@@ -310,7 +310,7 @@ def RegistrarDetalle(request):
         formulario = DetalleForm(data = request.POST)
         if formulario.is_valid():
             formulario.save() 
-            messages.success(request, "Detalle registrada")
+            messages.success(request, "Detalle registrado")
             return redirect('app:RegistrarDetalle')
         else:
             messages.success(request, "Ha ocurrido un error. Intentelo de nuevo")

@@ -5,7 +5,7 @@
 
 {% block cssA %} 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-<link rel="stylesheet" href="{% static 'app/css/Listar.css' %}"> 
+<link rel="stylesheet" href="{% static 'app/css/ListarClientes.css' %}"> 
 <link rel="stylesheet" href="{% static 'app/css/BarraA.css' %}"> 
 <title>SCVA_Usuarios</title>
 {% endblock%}
@@ -32,7 +32,8 @@
                                 <td>{{Usuario.Nombres}}</td>
                                 <td>{{Usuario.Apellidos}}</td>
                                 <td> <a href="{% url 'app:ModificarUsuario' Usuario.id %}" class="btn btn-primary">Modificar</a></td> 
-                                <td> <a href="{% url 'app:EliminarUsuario' Usuario.id %}" class="btn btn-danger">Eliminar</a></td> 
+                                <!--<td> <a href="{% url 'app:EliminarUsuario' Usuario.id %}" class="btn btn-danger">Eliminar</a></td> -->
+                                <td> <a href="#" onclick="eliminarUsuario({{p.id}})" class="btn btn-danger">Eliminar</a></td>
                             </tr> 
                         {% endfor%}
                     </tbody>
@@ -45,4 +46,27 @@
         </div>
     {% endif %}
     
+{% endblock %}
+
+{% block jsA %}
+        <script>
+            function eliminarUsuario(id){
+                Swal.fire({
+                    "title": "¿Está usted seguro de continuar con esta eliminación?",
+                    "text": "Esta acción no se puede deshacer",
+                    "icon": "question",
+                    "showCancelButton": true,
+                    "cancelButtonText":"Cacelar",
+                    "confirmButtonText": "Comfirmar",
+                    "reverseButtons":true,
+                    "confirmButtonColor":"#dc3545",
+                    "cancelButtonColor":"#0d6efd"
+                })
+                .then(function(result){
+                    if(result.isComfirmed){
+                        window.location.href= "/EliminarUsuario-"+id+"/"
+                    }
+                })
+            }
+        </script>
 {% endblock %}

@@ -51,7 +51,7 @@
                                 <td>{{Servicio.Cantidad}}</td> 
                                 <td>{{Servicio.Valor}}</td> 
                                 <td> <a href="{% url 'app:ModificarServicio' Servicio.id %}" class="btn btn-primary">Modificar</a></td>
-                                <td> <a href="{% url 'app:EliminarServicio' Servicio.id %}" class="btn btn-danger">Eliminar</a></td> 
+                                <td> <a href="#" onclick="eliminarServicio({{p.id}})" class="btn btn-danger">Eliminar</a></td>
                             </tr> 
                         {% endfor%}
                     </tbody>
@@ -79,4 +79,26 @@
         </div>
     {% endif %}
     
+{% endblock %}
+{% block jsA %}
+        <script>
+            function eliminarServicio(id){
+                Swal.fire({
+                    "title": "¿Está usted seguro de continuar con esta eliminación?",
+                    "text": "Esta acción no se puede deshacer",
+                    "icon": "question",
+                    "showCancelButton": true,
+                    "cancelButtonText":"Cacelar",
+                    "confirmButtonText": "Comfirmar",
+                    "reverseButtons":true,
+                    "confirmButtonColor":"#dc3545",
+                    "cancelButtonColor":"#0d6efd"
+                })
+                .then(function(result){
+                    if(result.isComfirmed){
+                        window.location.href= "/EliminarServicio-"+id+"/"
+                    }
+                })
+            }
+        </script>
 {% endblock %}
